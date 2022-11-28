@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7987118641510339825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6380663676844189410}
+  - component: {fileID: 3268587629713742713}
+  - component: {fileID: 8599797863140760629}
+  m_Layer: 0
+  m_Name: Oil Tank Prefab Git
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6380663676844189410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987118641510339825}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.9, y: -0.983, z: 245.76}
+  m_LocalScale: {x: 0.35365692, y: 0.35365692, z: 0.35365692}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4811985701548523713}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &3268587629713742713
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987118641510339825}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!205 &8599797863140760629
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987118641510339825}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.0010441941
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9082440563866659929}
+  m_Enabled: 1
+--- !u!1001 &5429276778900797865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6380663676844189410}
+    m_Modifications:
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0011290014
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.840801
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000015611065
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202033796473507419, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+        type: 3}
+      propertyPath: m_Name
+      value: oiltank
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 632fbc697e5a2ba44a48b762adf7b62e, type: 3}
+--- !u!4 &4811985701548523713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 693327805180000616, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5429276778900797865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9082440563866659929 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3842667680657462768, guid: 632fbc697e5a2ba44a48b762adf7b62e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5429276778900797865}
+  m_PrefabAsset: {fileID: 0}
