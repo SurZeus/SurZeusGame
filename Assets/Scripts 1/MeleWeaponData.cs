@@ -7,7 +7,7 @@ public class MeleWeaponData : WeaponInventoryData
 {
     // Start is called before the first frame update
     public int durability;
-
+   
     void Start()
     {
         

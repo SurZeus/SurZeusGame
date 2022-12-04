@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum AmunitionType
-{
-    STANAG,AK,SHEELS
-}
+
 [CreateAssetMenu(menuName = "Range Weapon Data")]
 
 public class RangeWeaponData : WeaponInventoryData
@@ -17,9 +14,10 @@ public class RangeWeaponData : WeaponInventoryData
     public float timeBetweenShots;
     public int magazineSize;
     public int bulletsPerTap;
-   
- 
-    public AmunitionType amunitionType;
+    
+
+
+    public AmmoItem compatibleAmo;
     // Start is called before the first frame update
     void Start()
     {

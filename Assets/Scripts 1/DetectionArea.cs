@@ -24,7 +24,8 @@ public class DetectionArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             enemy.GetComponentInChildren<Animator>().SetBool("isChasingPlayer", true);
-           
+           // enemy.GetComponentInChildren<Animator>().
+
         }
     }
 }

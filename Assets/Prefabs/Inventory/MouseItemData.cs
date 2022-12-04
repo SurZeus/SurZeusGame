@@ -73,6 +73,7 @@ public class MouseItemData : MonoBehaviour
             GameManager.Instance.equipItemButton.gameObject.SetActive(false);
         GameManager.Instance.dropItemButton.gameObject.SetActive(false);
         GameManager.Instance.weaponHolder.EquipToHands(AssignedInventorySlot);
+           // GameManager.Instance.OnWeaponDisabled.Invoke();
                 // Instantiate(AssignedInventorySlot.itemData.prefab, _playerTransform.position + _playerTransform.forward * 1f, Quaternion.identity);
          /*   if (AssignedInventorySlot.stackSize > 1)
             {

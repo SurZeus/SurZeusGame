@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     public InventorySlot currentItemSlot;
     public Camera camera;
     public bool isAttacking;
-    public float damage;
+    public int damage;
     public GameObject Axe;
     public bool CanAttack = true;
     public float AttackCooldown = 1.0f;
@@ -18,11 +18,33 @@ public class WeaponController : MonoBehaviour
     public Animator anim;
     public GameObject[] weaponsList;
     // Start is called before the first frame update
+
+    [Header("Weapon Sway")]
+    public Transform weaponSwayObject;
+    public float swayAmountA=5;
+    public float swayAmountB=10;
+    public float swayScale = 100;
+    public float swayLerpSpeed = 14;
+    public float swayTime;
+    public Vector3 swayPosition;
+    private void CalculateWeaponSway()
+    {
+        var targetPosition = LissajousCurve(swayTime, swayAmountA, swayAmountB) / swayScale;
+        swayTime += Time.deltaTime;
+        swayPosition = Vector3.Lerp(swayPosition, targetPosition, Time.smoothDeltaTime * swayLerpSpeed) ;
+        weaponSwayObject.localPosition = swayPosition;
+            
+    }
+    private Vector3 LissajousCurve(float Time,float A, float B)
+    {
+        return new Vector3(Mathf.Sin(Time), A *  Mathf.Sin(B * Time * Mathf.PI));
+    }
+
     void Start()
     {
 
         camera = Camera.main;
-        damage = 25f;
+        damage = 25;
         anim = Axe.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         isAttacking = false;
@@ -38,6 +60,8 @@ public class WeaponController : MonoBehaviour
                 AxeAttack();
             }
         }
+
+        CalculateWeaponSway();
     }
 
     public void AxeAttack()

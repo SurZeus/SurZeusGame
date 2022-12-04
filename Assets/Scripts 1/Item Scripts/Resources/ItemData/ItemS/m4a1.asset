@@ -26,4 +26,4 @@ MonoBehaviour:
   timeBetweenShots: 0.1
   magazineSize: 35
   bulletsPerTap: 1
-  amunitionType: 0
+  compatibleAmo: {fileID: 11400000, guid: a58e0c9178ba5a34a89ed631f0a6fab7, type: 2}

@@ -121,11 +121,26 @@ public class InventorySystem
         
     }
 
+    /*public bool ContainsItem(InventoryItemData itemNeeded, out List<InventorySlot> itemSlot)//do any of our slots have the item to add in them?
+    {
+
+        itemSlot = inventorySlots.Where(i => i.itemData == itemToAdd).ToList(); //if they do, get a list of all of them
+        return itemSlot.Count > 1 ? true : false; //if so return true, if not return false;
+
+    }*/
+
     public bool HasFreeSlot(out InventorySlot freeSlot)
     {
 
         freeSlot = inventorySlots.FirstOrDefault(I => I.itemData == null);//get the first free slot
         return freeSlot == null ? false : true;
+    } 
+    public bool HasThisItem(AmmoItem ammoItem, out InventorySlot slotWithGivenItem)
+    {
+
+        slotWithGivenItem = inventorySlots.FirstOrDefault(I => I.itemData is AmmoItem && I.itemData == ammoItem);
+
+        return slotWithGivenItem == null ? false : true;
     }
 }
 
@@ -226,7 +241,7 @@ public class InventorySlot : ISerializationCallbackReceiver
     public void OnAfterDeserialize()
     {
         if (_itemID == -1) return;
-        var db = Resources.Load<Database>("Database");
-        itemData = db.GetItem(_itemID);
+        // var db = Resources.Load<Database>("Database");
+        // itemData = db.GetItem(_itemID);
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 using CodeMonkey.HealthSystemCM;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour,IDamagable
 {
+    public bool heardNoise;
     public bool isChasingPlayer;
-    public float Health;
     public float walkSpeed;
     public NavMeshAgent enemyAgent;
     public GameObject detectionArea;
@@ -17,58 +17,39 @@ public class Enemy : MonoBehaviour
     [SerializeField]
    public float enemyWalkTime;
     public Transform centrePoint;
+    public Transform currentDestination;
+
+    public int Health { get ; set; }
+
+
+
     // Start is called before the first frame update
     private void Awake()
     {
+        heardNoise = false;
         enemyWalkTime = Random.Range(10, 30);
         Debug.Log("TIMER: " + enemyWalkTime);
         range = Random.Range(25, 60);
     }
     void Start()
     {
-       
+        currentDestination = centrePoint;
         isChasingPlayer = false;
        enemyAgent = GetComponent<NavMeshAgent>();
-        Health = 100f;
+       
        detectionArea =gameObject.transform.Find("DetectionArea").gameObject;
 
        
     }
 
     
-    // Update is called once per frame
     void Update()
     {
-      /*  if (!isChasingPlayer)
-        {
-            EnemyPatroling();
-        }
-        else
-        {
-            distanceToTarget = Vector3.Distance(enemy.transform.position, GameManager.Instance.player.transform.position);
-            if (distanceToTarget <=20)
-            {
-                EnemyGoTo(GameManager.Instance.player.transform.position);
-            }
-            else
-            {
-                isChasingPlayer = false ;
-            }
-        }*/
-        
+
+       // Debug.Log("odleglosc do gracza: "  + getDistanceToPlayer());
 
     }
-    public void getDamage(float damage)
-    {
-        Health = Health - damage;
-        if (Health <= 0)
-        {
-            gameObject.GetComponentInChildren<Animator>().SetTrigger("gotKilled");
-            gameObject.GetComponent<NavMeshAgent>().enabled = false;
-            Destroy(gameObject, 5);
-        }
-
-    }
+    
 
    
 
@@ -79,17 +60,9 @@ public class Enemy : MonoBehaviour
 
     public void EnemyPatroling()
     {
-       /* if (enemy.remainingDistance <= enemy.stoppingDistance) //done with path
-        {
-            Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                enemy.SetDestination(point);
-            }
-        }*/
+      
     }
-    //if you use this code you are contractually obligated to like the YT video
+ 
 
 
 
@@ -116,7 +89,25 @@ public class Enemy : MonoBehaviour
         return false;
     }
 
+    public void getDamage(int damageAmount)
+    {
+        
+        Health = Health - damageAmount;
+        if (Health <= 0)
+        {
+            gameObject.GetComponentInChildren<Animator>().SetTrigger("gotKilled");
+          
+            gameObject.GetComponent<NavMeshAgent>().enabled = false;
 
+            Destroy(gameObject, 5);
+        }
+    }
+
+    public float getDistanceToPlayer()
+    {
+        float distance = Vector3.Distance(GameManager.Instance.player.transform.position, this.transform.position);
+        return distance;
+    }
 }
     //AI
 

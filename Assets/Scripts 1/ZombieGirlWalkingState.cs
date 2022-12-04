@@ -43,16 +43,26 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-
-
-        if (enemyAgent.isActiveAndEnabled)
+        //jezeli patroluje i nie slyszal wystrzalu
+        if (enemy.heardNoise == false)
         {
-            if (enemyAgent.remainingDistance <= enemyAgent.stoppingDistance)
-            {
-                animator.SetBool("isWalking", false);
 
+            if (enemyAgent.isActiveAndEnabled)
+            {
+                if (enemyAgent.remainingDistance <= enemyAgent.stoppingDistance)
+                {
+                    animator.SetBool("isWalking", false);
+
+                }
             }
         }
+        else
+        {
+            enemyAgent.SetDestination(GameManager.Instance.player.transform.position);
+            enemy.heardNoise = false;
+        }
+
+
        
       
     }

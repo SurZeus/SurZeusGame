@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TouchControlsKit;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Events;
+using TMPro;
+
 public class GameManager : MonoBehaviour
 {
 
@@ -12,6 +15,7 @@ public class GameManager : MonoBehaviour
     private GameObject _playerMovementControlls;
     [SerializeField]
     private GameObject _playerUI;
+    public PlayerInventoryHolder playerInventory;
     [SerializeField]
     private GameObject _menuCanvas;
     public WeaponController weaponHolder;
@@ -26,13 +30,15 @@ public class GameManager : MonoBehaviour
     //Cameras
     public Camera playerCamera;
     public Camera menuCamera;
-
+    public TextMeshProUGUI weaponAmmunitionUI;
     public AudioManager audioManager;
 
     public static GameManager Instance;
     [SerializeField]
     public Player player;
     [SerializeField] float playerScore;
+
+    public UnityAction OnWeaponDisabled;
     // Start is called before the first frame update
     private void Awake()
     {

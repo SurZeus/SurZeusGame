@@ -33,7 +33,7 @@ public class ChasingPlayerState : StateMachineBehaviour
 
             }
 
-            if (enemyAgent.remainingDistance >= 20)
+            if (enemyAgent.remainingDistance >= 60)
             {
                 animator.SetBool("isChasingPlayer", false);
                 // animator.SetBool("isWalking", false);

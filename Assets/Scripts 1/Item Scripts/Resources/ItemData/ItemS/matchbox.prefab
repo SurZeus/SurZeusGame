@@ -156,11 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d6576a141c5964d812e320d49aa92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ih: {fileID: 0}
-  item: {fileID: 11400000, guid: f1bc537e49a3c53408b68507865dcc4c, type: 2}
-  quantity: 3
+  item: {fileID: 11400000, guid: a58e0c9178ba5a34a89ed631f0a6fab7, type: 2}
+  quantity: 1
   itemSaveData:
-    itemData: {fileID: 11400000, guid: f1bc537e49a3c53408b68507865dcc4c, type: 2}
+    itemData: {fileID: 11400000, guid: a58e0c9178ba5a34a89ed631f0a6fab7, type: 2}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &5992965570066818863

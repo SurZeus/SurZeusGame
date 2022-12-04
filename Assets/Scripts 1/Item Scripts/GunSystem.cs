@@ -4,7 +4,10 @@ using TouchControlsKit;
 
 public class GunSystem : MonoBehaviour
 {
+    
     //Gun stats
+    public AdvancedCamRecoil advancedCam;
+    public AdvancedWeaponRecoil advancedWeapon;
     public RangeWeaponData weapon;
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
@@ -14,7 +17,7 @@ public class GunSystem : MonoBehaviour
     public AudioSource audioSource;
     //bools 
     bool shooting, readyToShoot, reloading;
-
+    public InventorySlot TempAmmoSlot = null;
     //Reference
     public Camera fpsCam;
     public Transform attackPoint;
@@ -29,6 +32,8 @@ public class GunSystem : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.Instance.OnWeaponDisabled += DisableText;
+        text = GameManager.Instance.weaponAmmunitionUI;
        // camShake = Camera.main.GetComponent<CamShake>();
         damage = weapon.damage;
         timeBetweenShooting = weapon.timeBetweenShooting;
@@ -36,7 +41,7 @@ public class GunSystem : MonoBehaviour
         range = weapon.range;
         reloadTime = weapon.reloadTime;
         magazineSize = weapon.magazineSize;
-        bulletsLeft = magazineSize;
+        bulletsLeft = 0;
         readyToShoot = true;
         bulletsPerTap = 1;
         //timeBetweenShooting = 0.15f;
@@ -61,6 +66,9 @@ public class GunSystem : MonoBehaviour
         {
             bulletsShot = bulletsPerTap;
             Shoot();
+            EnemyManager.instance.attractNearbyZombies();
+            advancedCam.Fire();
+            advancedWeapon.Fire();
         }
     }
     private void Shoot()
@@ -111,12 +119,90 @@ public class GunSystem : MonoBehaviour
     }
     private void Reload()
     {
-        reloading = true;
-        Invoke("ReloadFinished", reloadTime);
+        //Debug.Log("reload");
+        if (bulletsLeft != magazineSize && GameManager.Instance.playerInventory.PrimaryInventorySystem.HasThisItem(this.weapon.compatibleAmo, out InventorySlot foundSlot))
+        {
+            TempAmmoSlot = foundSlot;
+            reloading = true;
+            Invoke("ReloadFinished", reloadTime);
+            reloading = false;
+
+        }
     }
     private void ReloadFinished()
     {
-        bulletsLeft = magazineSize;
-        reloading = false;
+        if (bulletsLeft == 0)//jezeli magazynek jest pusty
+        {
+           
+            if(TempAmmoSlot.stackSize <= magazineSize)//jezeli stak jest mniejszy od pojemnosci magazynka to przerzucam calosc ze staka do maga i usuwam staka
+            {
+                bulletsLeft = TempAmmoSlot.stackSize;
+                TempAmmoSlot.ClearSlot();
+                GameManager.Instance.playerInventory.PrimaryInventorySystem.OnItemSlotChanged(TempAmmoSlot);
+                reloading = false;
+                return;
+
+            }
+           else if (TempAmmoSlot.stackSize > magazineSize)//jezeli w staku jeste wiecej pociskow niz max pojemnosci to wrzucam tylko tyle ile sie da i zabrane naboje odejmuje od boxa z ammo
+            {
+                bulletsLeft =magazineSize;
+                TempAmmoSlot.stackSize -= magazineSize;
+                GameManager.Instance.playerInventory.PrimaryInventorySystem.OnItemSlotChanged(TempAmmoSlot);
+                reloading = false;
+                return;
+            }
+
+
+        }
+
+        if(bulletsLeft >=0) //jezeli zostal owiecej niz 0 pociskow
+        {
+            //sprawdzam ile moge zaladowac
+            int bulletsToLoad;
+
+            bulletsToLoad = magazineSize - bulletsLeft;
+            if(bulletsLeft == magazineSize)
+            {
+                reloading = false;
+                return;
+               
+               
+               
+            }
+
+            if(TempAmmoSlot.stackSize <= bulletsToLoad) //jezel pocisow w boxie jest mniej badz tyle samo co magazynek ma wolnego miejsca 
+            {
+                bulletsLeft += TempAmmoSlot.stackSize;
+                TempAmmoSlot.ClearSlot();
+                GameManager.Instance.playerInventory.PrimaryInventorySystem.OnItemSlotChanged(TempAmmoSlot);
+                reloading = false;//dodaj do magazynka pociski w boxie
+            }
+
+            else if (bulletsToLoad <TempAmmoSlot.stackSize) //jezeli bullLeft jest mniejsze od amo w boxie to
+            {
+                Debug.Log("wtf");
+                bulletsLeft += bulletsToLoad;
+                TempAmmoSlot.stackSize -= bulletsToLoad;
+                GameManager.Instance.playerInventory.PrimaryInventorySystem.OnItemSlotChanged(TempAmmoSlot);
+                reloading = false;
+            }
+
+        }
+        else {
+            //bulletsLeft = magazineSize;
+            //reloading = false;
+        }
+        
+    }
+
+    public void CheckIfCanReload()
+    {
+        ;
+    }
+
+
+    public void DisableText()
+    {
+        text.gameObject.SetActive(false);
     }
 }
