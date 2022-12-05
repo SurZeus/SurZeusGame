@@ -38,6 +38,8 @@ public class PlayerInventoryHolder : InventoryHolder
         return false;
     }
 
+    
+
     public void OpenInventory()
     {
          OnPlayerInventoryDisplayRequested?.Invoke(primaryInventorySystem, offset);

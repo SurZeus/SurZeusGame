@@ -8,6 +8,7 @@ public class ItemPickUp : MonoBehaviour
   // public InventoryHolder ih;
     public InventoryItemData item;
     public int quantity;
+    public int loadedAmmo; //ammo count,
     [SerializeField] 
     private ItemPickUpSaveData itemSaveData;
     private string id;
@@ -48,14 +49,22 @@ public class ItemPickUp : MonoBehaviour
         if (!inventory) return;
         Debug.Log("set ikmn");
 
-        if (inventory.AddToInventory((InventoryItemData)item, quantity))
-        {
-            SaveManager.data.collectedItems.Add(id);
-            Destroy(this.gameObject);
-           
+        
+            if (inventory.AddToInventory((InventoryItemData)item, quantity))
+            {
+                if (item is RangeWeaponData)
+                {
+
+                }
+                SaveManager.data.collectedItems.Add(id);
+                Destroy(this.gameObject);
+
+            }
         }
+
+
        // ih.PrimaryInventorySystem.AddToInventory(item, quantity);
-    }
+    
 }
 
 [System.Serializable]

@@ -113,6 +113,7 @@ public class InventorySystem
 
     }
 
+    
     public bool ContainsItem(InventoryItemData itemToAdd, out  List<InventorySlot> itemSlot)//do any of our slots have the item to add in them?
     {
         
@@ -154,11 +155,13 @@ public class InventorySlot : ISerializationCallbackReceiver
     [NonSerialized] public InventoryItemData itemData; //reference to the data
     public bool isEquipped = false;
     public int stackSize; //current stack size - how many of the data do we have
+    public int loadedAmmo = 0;
     public InventorySlot(InventoryItemData item, int count)  //constructor to make a occupied inventory slot
     {
         this.itemData = item;
         _itemID = itemData.id;
         this.stackSize = count;
+        this.loadedAmmo = 0;
     }
 
 

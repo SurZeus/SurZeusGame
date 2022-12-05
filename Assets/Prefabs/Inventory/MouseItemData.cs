@@ -73,23 +73,24 @@ public class MouseItemData : MonoBehaviour
             GameManager.Instance.equipItemButton.gameObject.SetActive(false);
         GameManager.Instance.dropItemButton.gameObject.SetActive(false);
         GameManager.Instance.weaponHolder.EquipToHands(AssignedInventorySlot);
-           // GameManager.Instance.OnWeaponDisabled.Invoke();
-                // Instantiate(AssignedInventorySlot.itemData.prefab, _playerTransform.position + _playerTransform.forward * 1f, Quaternion.identity);
-         /*   if (AssignedInventorySlot.stackSize > 1)
-            {
-                AssignedInventorySlot.AddToStack(-1);
-                tempSlot.UpdateUISlot(AssignedInventorySlot);
-                //tempSlot.
-                UpdateMouseSlot();
-            }
-            else
-            {
-                ClearSlot();
-                if (tempSlot != null)
-                {
-                    tempSlot.ClearSlot();
-                }
-            }*/
+        
+            // GameManager.Instance.OnWeaponDisabled.Invoke();
+            // Instantiate(AssignedInventorySlot.itemData.prefab, _playerTransform.position + _playerTransform.forward * 1f, Quaternion.identity);
+            /*   if (AssignedInventorySlot.stackSize > 1)
+               {
+                   AssignedInventorySlot.AddToStack(-1);
+                   tempSlot.UpdateUISlot(AssignedInventorySlot);
+                   //tempSlot.
+                   UpdateMouseSlot();
+               }
+               else
+               {
+                   ClearSlot();
+                   if (tempSlot != null)
+                   {
+                       tempSlot.ClearSlot();
+                   }
+               }*/
 
 
         }
@@ -99,11 +100,11 @@ public class MouseItemData : MonoBehaviour
         if (AssignedInventorySlot.itemData != null)
         {
             // transform.position = Input.mousePosition;
-
+            
 
             if (AssignedInventorySlot.itemData.prefab != null)
             {
-                if(AssignedInventorySlot == GameManager.Instance.weaponHolder.currentItemSlot)
+                if(AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem)
                 {
                     GameManager.Instance.weaponHolder.currentItem.gameObject.SetActive(false);
                     GameManager.Instance.weaponHolder.currentItemSlot = null;
@@ -118,6 +119,8 @@ public class MouseItemData : MonoBehaviour
                 //tempSlot.
                 UpdateMouseSlot();
             }
+
+            
             else
             {
                 ClearSlot();

@@ -13,7 +13,7 @@ public class GunSystem : MonoBehaviour
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
-    int bulletsLeft, bulletsShot;
+   public  int bulletsLeft, bulletsShot;
     public AudioSource audioSource;
     //bools 
     bool shooting, readyToShoot, reloading;
@@ -32,6 +32,7 @@ public class GunSystem : MonoBehaviour
 
     private void Awake()
     {
+        
         GameManager.Instance.OnWeaponDisabled += DisableText;
         text = GameManager.Instance.weaponAmmunitionUI;
        // camShake = Camera.main.GetComponent<CamShake>();

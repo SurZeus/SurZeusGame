@@ -5,6 +5,7 @@ using TouchControlsKit;
 
 public class WeaponController : MonoBehaviour
 {
+    public InventoryItemData currentItemData;
     public GameObject currentItem;
     public InventorySlot currentItemSlot;
     public Camera camera;
@@ -133,6 +134,11 @@ public class WeaponController : MonoBehaviour
                 weaponsList[i].gameObject.SetActive(true);
                 currentItem = weaponsList[i].gameObject;
                 currentItemSlot = item;
+                if (item is RangeWeaponData)
+                {
+                    weaponsList[i].GetComponent<GunSystem>().bulletsLeft = item.loadedAmmo;
+                }
+
             }
         }
         
