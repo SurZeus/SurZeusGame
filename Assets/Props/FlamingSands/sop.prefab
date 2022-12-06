@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3698089474514534563}
   - component: {fileID: 8433095176758654930}
+  - component: {fileID: 2808937746047970198}
   m_Layer: 0
   m_Name: sop
   m_TagString: Untagged
@@ -67,6 +68,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7642963164512518653}
   m_Enabled: 1
+--- !u!65 &2808937746047970198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042420900765407769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6869537, y: 0.90496886, z: 2.9844627}
+  m_Center: {x: 0.011179807, y: 0.43323293, z: 0.069877736}
 --- !u!1 &6917051435387429079
 GameObject:
   m_ObjectHideFlags: 0

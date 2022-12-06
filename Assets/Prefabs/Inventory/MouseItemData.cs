@@ -100,11 +100,13 @@ public class MouseItemData : MonoBehaviour
         if (AssignedInventorySlot.itemData != null)
         {
             // transform.position = Input.mousePosition;
-            
 
-            if (AssignedInventorySlot.itemData.prefab != null)
-            {
-                if(AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem)
+
+            if (AssignedInventorySlot.itemData.prefab != null) { 
+
+                Debug.Log("asigned: " + AssignedInventorySlot.itemData);
+                Debug.Log("current: "  + GameManager.Instance.weaponHolder.currentItem);
+                if (AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem.GetComponent<WeaponHolderItem>().weapon)
                 {
                     GameManager.Instance.weaponHolder.currentItem.gameObject.SetActive(false);
                     GameManager.Instance.weaponHolder.currentItemSlot = null;

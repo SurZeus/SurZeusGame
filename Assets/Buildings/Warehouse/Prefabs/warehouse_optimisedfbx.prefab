@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1733609107063816274}
   - component: {fileID: 6797369884660823843}
+  - component: {fileID: 6806030659292076610}
   m_Layer: 0
   m_Name: warehouse_optimisedfbx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1733609107063816274
 Transform:
@@ -57,6 +58,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6384811848122275787}
   m_Enabled: 1
+--- !u!65 &6806030659292076610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388468646482516712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 209.89124, y: 147.89534, z: 155.49365}
+  m_Center: {x: -0.30461463, y: -20.388046, z: -60.33984}
 --- !u!1 &3189791418277947025
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +87,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1872280450760125383
 Transform:
@@ -156,7 +170,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &252044529282197181
 Transform:

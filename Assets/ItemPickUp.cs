@@ -52,10 +52,7 @@ public class ItemPickUp : MonoBehaviour
         
             if (inventory.AddToInventory((InventoryItemData)item, quantity))
             {
-                if (item is RangeWeaponData)
-                {
-
-                }
+               
                 SaveManager.data.collectedItems.Add(id);
                 Destroy(this.gameObject);
 

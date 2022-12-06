@@ -17,7 +17,7 @@ public class WeaponController : MonoBehaviour
     public AudioClip AttackSound;
     public AudioSource audioSource;
     public Animator anim;
-    public GameObject[] weaponsList;
+    public WeaponHolderItem[] weaponsList;
     // Start is called before the first frame update
 
     [Header("Weapon Sway")]
