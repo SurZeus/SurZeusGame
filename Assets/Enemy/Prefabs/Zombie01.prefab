@@ -158,7 +158,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce8bb541de9faf4cb91049a300039c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heardNoise: 0
   isChasingPlayer: 0
-  Health: 100
   walkSpeed: 1
   enemyAgent: {fileID: 0}
   detectionArea: {fileID: 5808290302563002925}
@@ -191,6 +191,7 @@ MonoBehaviour:
   range: 50
   enemyWalkTime: 0
   centrePoint: {fileID: 0}
+  currentDestination: {fileID: 0}
 --- !u!82 &5808290303746140552
 AudioSource:
   m_ObjectHideFlags: 0
@@ -371,6 +372,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9de01b9d46d218d4fb719c1907e064c4, type: 3}
   m_PrefabInstance: {fileID: 5808290303745757965}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &209821616
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6654728775278898780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.49215704, z: 1}
+  m_Center: {x: 0, y: 0.25392154, z: 0}
 --- !u!95 &5808290302261257919
 Animator:
   serializedVersion: 4
@@ -391,16 +405,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &209821616
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6654728775278898780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.49215704, z: 1}
-  m_Center: {x: 0, y: 0.25392154, z: 0}

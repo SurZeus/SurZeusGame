@@ -20,12 +20,13 @@ public class Enemy : MonoBehaviour,IDamagable
     public Transform currentDestination;
 
     public int Health { get ; set; }
-
+  
 
 
     // Start is called before the first frame update
     private void Awake()
     {
+       
         heardNoise = false;
         enemyWalkTime = Random.Range(10, 30);
         Debug.Log("TIMER: " + enemyWalkTime);
@@ -33,6 +34,8 @@ public class Enemy : MonoBehaviour,IDamagable
     }
     void Start()
     {
+
+        StartCoroutine(AddToEnemyManager());
         currentDestination = centrePoint;
         isChasingPlayer = false;
        enemyAgent = GetComponent<NavMeshAgent>();
@@ -91,15 +94,18 @@ public class Enemy : MonoBehaviour,IDamagable
 
     public void getDamage(int damageAmount)
     {
-        
+       
+
         Health = Health - damageAmount;
         if (Health <= 0)
         {
             gameObject.GetComponentInChildren<Animator>().SetTrigger("gotKilled");
           
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
-
+            EnemyManager.instance.enemies.Remove(this);
             Destroy(gameObject, 5);
+            
+          
         }
     }
 
@@ -107,6 +113,17 @@ public class Enemy : MonoBehaviour,IDamagable
     {
         float distance = Vector3.Distance(GameManager.Instance.player.transform.position, this.transform.position);
         return distance;
+    }
+
+    private void OnDestroy()
+    {
+        EnemySpawnManager.enemyHasDied.Invoke();
+
+    }
+    public IEnumerator AddToEnemyManager()
+    {
+        yield return new  WaitForSeconds(5f);
+        EnemyManager.instance.enemies.Add(this);
     }
 }
     //AI

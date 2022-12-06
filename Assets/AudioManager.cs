@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource mainAudio;
-
+    public AudioSource inGameMusic;
     public AudioClip natureClip;
     public AudioClip mainMenu;
     // Start is called before the first frame update

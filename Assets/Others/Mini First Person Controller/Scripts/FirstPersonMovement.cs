@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TouchControlsKit;
+using System;
+
 public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 5;
@@ -12,6 +14,7 @@ public class FirstPersonMovement : MonoBehaviour
     public KeyCode runningKey = KeyCode.LeftShift;
 
     Rigidbody rigidbody;
+    public static event Action<int> PlayerIsMoving;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
@@ -53,10 +56,12 @@ public class FirstPersonMovement : MonoBehaviour
         if (rigidbody.velocity.magnitude > 1)
         {
             Player.player.WeaponHolder.GetComponent<WeaponController>().anim.SetBool("isWalking", true);
+            PlayerIsMoving(1);
         }
         else
         {
             Player.player.WeaponHolder.GetComponent<WeaponController>().anim.SetBool("isWalking", false);
+            PlayerIsMoving(-1);
         }
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
     }
