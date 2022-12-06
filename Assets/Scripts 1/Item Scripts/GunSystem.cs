@@ -4,9 +4,11 @@ using TouchControlsKit;
 
 public class GunSystem : MonoBehaviour
 {
-    
+
     //Gun stats
+    [HideInInspector]
     public AdvancedCamRecoil advancedCam;
+    [HideInInspector]
     public AdvancedWeaponRecoil advancedWeapon;
     public RangeWeaponData weapon;
     public int damage;
@@ -26,13 +28,14 @@ public class GunSystem : MonoBehaviour
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
-   public CamShake camShake;
-    public float camShakeMagnitude, camShakeDuration;
+   //public CamShake camShake;
+   // public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
 
     private void Awake()
     {
-        
+        advancedWeapon = this.gameObject.GetComponent<AdvancedWeaponRecoil>();
+        advancedCam = GameObject.Find("WeaponRecoil").GetComponent<AdvancedCamRecoil>(); ;
         GameManager.Instance.OnWeaponDisabled += DisableText;
         text = GameManager.Instance.weaponAmmunitionUI;
        // camShake = Camera.main.GetComponent<CamShake>();
@@ -45,13 +48,14 @@ public class GunSystem : MonoBehaviour
         bulletsLeft = 0;
         readyToShoot = true;
         bulletsPerTap = 1;
+        
         //timeBetweenShooting = 0.15f;
     }
     private void Update()
     {
-       // camShake.Shake(camShakeDuration, camShakeMagnitude);
+       
         MyInput();
-        //SetText
+        
         text.SetText(bulletsLeft + " / " + magazineSize);
     }
     private void MyInput()
@@ -81,15 +85,13 @@ public class GunSystem : MonoBehaviour
         float y = Random.Range(-spread, spread);
         Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
         Vector3 rayOrigin = new Vector3(0.5f, 0.5f, 0f);
-        //Calculate Direction with Spread
-       // Vector3 direction = new Vector3(0.5f, 0.5f, 0f);
         Ray ray = Camera.main.ViewportPointToRay(rayOrigin);
         //RayCast
         Debug.DrawRay(ray.origin, direction * range, Color.red);
         if (Physics.Raycast(ray.origin,direction, out rayHit, range, whatIsEnemy))
         {
             Debug.Log(rayHit.collider.name);
-           // Debug.DrawRay(fpsCam.transform.position, direction);
+           Debug.DrawRay(fpsCam.transform.position, direction);
 
             if (rayHit.collider.CompareTag("Enemy"))
             {
@@ -99,7 +101,7 @@ public class GunSystem : MonoBehaviour
         }
 
         //ShakeCamera
-       camShake.Shake(camShakeDuration, camShakeMagnitude);
+      // camShake.Shake(camShakeDuration, camShakeMagnitude);
         audioSource.PlayOneShot(audioSource.clip);
 
         //Graphics
@@ -196,11 +198,7 @@ public class GunSystem : MonoBehaviour
         
     }
 
-    public void CheckIfCanReload()
-    {
-        ;
-    }
-
+    
 
     public void DisableText()
     {

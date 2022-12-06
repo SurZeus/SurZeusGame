@@ -5,7 +5,7 @@ using TouchControlsKit;
 
 public class WeaponController : MonoBehaviour
 {
-    public InventoryItemData currentItemData;
+   // public InventoryItemData currentItemData;
     public GameObject currentItem;
     public InventorySlot currentItemSlot;
     public Camera camera;
