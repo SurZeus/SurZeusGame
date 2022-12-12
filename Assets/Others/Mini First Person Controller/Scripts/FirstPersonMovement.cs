@@ -13,6 +13,7 @@ public class FirstPersonMovement : MonoBehaviour
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
     public static event Action<bool> isSprinting;
+    
     Rigidbody rigidbody;
     public static event Action<int> PlayerIsMoving;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -26,7 +27,7 @@ public class FirstPersonMovement : MonoBehaviour
     private void OnDisable()
     {
        isSprinting -= ManageStamina;
-    }
+    } 
     void Awake()
     {
         // Get the rigidbody on this.
