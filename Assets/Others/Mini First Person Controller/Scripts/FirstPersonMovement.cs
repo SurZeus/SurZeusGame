@@ -12,14 +12,21 @@ public class FirstPersonMovement : MonoBehaviour
     public bool IsRunning { get; private set; }
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
-
+    public static event Action<bool> isSprinting;
     Rigidbody rigidbody;
     public static event Action<int> PlayerIsMoving;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
 
-
+    private void OnEnable()
+    {
+        isSprinting += ManageStamina;
+    }
+    private void OnDisable()
+    {
+       isSprinting -= ManageStamina;
+    }
     void Awake()
     {
         // Get the rigidbody on this.
@@ -29,9 +36,10 @@ public class FirstPersonMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Update IsRunning from input.
-        IsRunning = canRun && TCKInput.GetAction("sprintBtn", EActionEvent.Press);
+        IsRunning = Player.player.playerStamina >0 && canRun && TCKInput.GetAction("sprintBtn", EActionEvent.Press);
 
-
+        if (IsRunning) isSprinting(true);
+        else isSprinting(false);
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
         if (speedOverrides.Count > 0)
@@ -67,4 +75,20 @@ public class FirstPersonMovement : MonoBehaviour
     }
 
 
+    public void ManageStamina(bool isRuning)
+    {
+        if(isRuning && Player.player.playerStamina!=0)
+        Player.player.playerStamina -= Time.deltaTime *5;
+        else if(isRuning==false && Player.player.playerStamina <=100)
+        {
+            Player.player.playerStamina += Time.deltaTime *2;
+        }
+        else if (Player.player.playerStamina <= 0)
+        {
+            Player.player.playerStamina = 0;
+        }
+
+    }
+
+   
 }

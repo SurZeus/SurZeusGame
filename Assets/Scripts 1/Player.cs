@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TouchControlsKit;
+using System;
+
 public class Player : MonoBehaviour
 {
     [SerializeField]
     public int playerHealth;
     public GameObject WeaponHolder;
     public static Player player;
+    public float maxStamina;
+    public float playerStamina;
+   
     // Start is called before the first frame update
     void Start()
     {
+        maxStamina = 100;
+        playerStamina = maxStamina;
         playerHealth = 100;
         player = this;
         Application.targetFrameRate =60;

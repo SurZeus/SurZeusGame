@@ -42,6 +42,11 @@ public class MouseItemData : MonoBehaviour
         {
             GameManager.Instance.equipItemButton.gameObject.SetActive(true);
         }
+
+        if (invSlot.itemData is ConsumableItemData)
+        {
+            UIManager.instance.consumeItemButton.gameObject.SetActive(true);
+        }
         GameManager.Instance.dropItemButton.gameObject.SetActive(true);
         tempSlot = clickedSlot;
         AssignedInventorySlot.AssignItem(invSlot);
@@ -59,6 +64,21 @@ public class MouseItemData : MonoBehaviour
     {
        
 
+    }
+    public void ConsumeItem()
+    {
+        if (AssignedInventorySlot.itemData != null && AssignedInventorySlot.itemData is ConsumableItemData)
+        {
+            var temp = (ConsumableItemData)AssignedInventorySlot.itemData;
+            Player.player.playerStamina += temp.energyValue;
+            
+        }
+        UIManager.instance.consumeItemButton.gameObject.SetActive(false);
+        ClearSlot();
+        if (tempSlot != null)
+        {
+            tempSlot.ClearSlot();
+        }
     }
     public void EquipItem()
     {
@@ -106,7 +126,7 @@ public class MouseItemData : MonoBehaviour
 
                 Debug.Log("asigned: " + AssignedInventorySlot.itemData);
                 Debug.Log("current: "  + GameManager.Instance.weaponHolder.currentItem);
-                if (AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem.GetComponent<WeaponHolderItem>().weapon)
+                if (GameManager.Instance.weaponHolder.currentItem != null && AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem.GetComponent<WeaponHolderItem>().weapon)
                 {
                     GameManager.Instance.weaponHolder.currentItem.gameObject.SetActive(false);
                     GameManager.Instance.weaponHolder.currentItemSlot = null;
