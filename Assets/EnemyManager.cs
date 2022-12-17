@@ -32,12 +32,12 @@ public class EnemyManager : MonoBehaviour
                 {
                     if (enemy.getDistanceToPlayer() <= 50f)
                     {
-                        Debug.Log("co jest kjurwa");
+                      //  Debug.Log("co jest kjurwa");
                         enemy.GetComponentInChildren<Animator>().SetBool("isChasingPlayer", true);
                     }
                     else if (enemy.getDistanceToPlayer() >= 51f)
                     {
-                        Debug.Log("kurwaaa");
+                        //Debug.Log("kurwaaa");
                         enemy.heardNoise = true;
                     }
                 }

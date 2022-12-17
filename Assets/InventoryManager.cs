@@ -80,10 +80,10 @@ public class InventorySystem
 
     public bool AddToInventory(InventoryItemData itemToAdd, int amountToAdd)
     {
-        Debug.Log("TESTUJE");
+      //  Debug.Log("TESTUJE");
         if(ContainsItem(itemToAdd,out List<InventorySlot> itemSlot))
         {
-            Debug.Log("CONTAINS");
+           // Debug.Log("CONTAINS");
             foreach (var slot in itemSlot)
             {
                 if (slot.EnoughRoomLeftInStack(amountToAdd))

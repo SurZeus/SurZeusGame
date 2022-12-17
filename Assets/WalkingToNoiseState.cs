@@ -18,7 +18,7 @@ public class WalkingToNoiseState : StateMachineBehaviour
     {
 
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
-        enemyAgent.speed = 1;
+        //enemyAgent.speed = 1;
         enemy = animator.GetComponentInParent<Enemy>();
         enemy.currentDestination = GameManager.Instance.player.transform;
 

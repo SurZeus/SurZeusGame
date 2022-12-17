@@ -8,15 +8,7 @@ public class WeaponHolderItem : MonoBehaviour
 
     public WeaponInventoryData weapon;
 
-    private void Start()
-    {
-        //weapon = gameObject.GetComponent<GunSystem>().weapon;
-    }
-    private void Awake()
-    {
-  
-    }
-
-    // Update is called once per frame
+ 
+    
    
 }

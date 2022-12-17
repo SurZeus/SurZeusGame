@@ -4,9 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*public class itemSpriteGenerator : MonoBehaviour
+public class itemSpriteGenerator : MonoBehaviour
 {
-    Camera cam;
+  /*  Camera cam;
     public string pathFolder;
 
     public List<GameObject> sceneObjects;
@@ -79,5 +79,5 @@ using UnityEngine.UI;
         AssetDatabase.Refresh();
 #endif
 
-         }
-    }*/
+         }*/
+    }

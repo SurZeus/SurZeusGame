@@ -6,7 +6,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour,IDamagable
 {
+    public bool isAlive;
     public bool heardNoise;
+    public bool isEngagingPlayer;
     public bool isChasingPlayer;
     public float walkSpeed;
     public NavMeshAgent enemyAgent;
@@ -18,40 +20,36 @@ public class Enemy : MonoBehaviour,IDamagable
    public float enemyWalkTime;
     public Transform centrePoint;
     public Transform currentDestination;
+    public Animator animator;
+    public AudioSource audioSource;
+    public int health;
+    
 
-    public int Health { get ; set; }
-  
-
-
+    
     // Start is called before the first frame update
     private void Awake()
     {
-       
+        animator = gameObject.GetComponentInChildren<Animator>();
+        health = 100;
         heardNoise = false;
-        enemyWalkTime = Random.Range(10, 30);
-        Debug.Log("TIMER: " + enemyWalkTime);
-        range = Random.Range(25, 60);
+        enemyWalkTime = Random.Range(50, 100);
+        range = Random.Range(25, 100);
     }
     void Start()
     {
-
-        StartCoroutine(AddToEnemyManager());
-        currentDestination = centrePoint;
-        isChasingPlayer = false;
-       enemyAgent = GetComponent<NavMeshAgent>();
-       
-       detectionArea =gameObject.transform.Find("DetectionArea").gameObject;
+     audioSource = GetComponent<AudioSource>();
+     isAlive = true;
+     StartCoroutine(AddToEnemyManager());
+     currentDestination = centrePoint;
+     isChasingPlayer = false;
+     enemyAgent = GetComponent<NavMeshAgent>();
+     detectionArea =gameObject.transform.Find("DetectionArea").gameObject;
 
        
     }
 
     
-    void Update()
-    {
-
-       // Debug.Log("odleglosc do gracza: "  + getDistanceToPlayer());
-
-    }
+   
     
 
    
@@ -61,46 +59,22 @@ public class Enemy : MonoBehaviour,IDamagable
         enemyAgent.SetDestination(position);
     }
 
-    public void EnemyPatroling()
-    {
-      
-    }
- 
-
-
-
-
-
-
-
-
-
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    {
-
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
-        {
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }
+    
+    
 
     public void getDamage(int damageAmount)
     {
-       
-
-        Health = Health - damageAmount;
-        if (Health <= 0)
+        health = health - damageAmount;
+        if (health <= 0)
         {
-            gameObject.GetComponentInChildren<Animator>().SetTrigger("gotKilled");
-          
+            if(isAlive)
+            {
+                animator.SetTrigger("gotKilled");
+                isAlive = false;
+            }
+           
+
+            
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             EnemyManager.instance.enemies.Remove(this);
             Destroy(gameObject, 5);
@@ -122,8 +96,14 @@ public class Enemy : MonoBehaviour,IDamagable
     }
     public IEnumerator AddToEnemyManager()
     {
-        yield return new  WaitForSeconds(5f);
+        yield return new  WaitForSeconds(2f);
         EnemyManager.instance.enemies.Add(this);
+    }
+
+    IEnumerator playSoundWithDelay(AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.PlayOneShot(clip);
     }
 }
     //AI

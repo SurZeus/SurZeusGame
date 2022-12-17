@@ -30,7 +30,7 @@ public class Jump : MonoBehaviour
              rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
              Jumped?.Invoke();
          }*/
-        if (TCKInput.GetAction("jumpBtn",EActionEvent.Down)&& (!groundCheck || groundCheck.isGrounded))
+        if (TCKInput.GetAction("jumpBtn", EActionEvent.Down) && (!groundCheck || groundCheck.isGrounded))
         {
             rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
             Jumped?.Invoke();

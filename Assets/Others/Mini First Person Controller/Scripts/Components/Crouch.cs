@@ -39,7 +39,7 @@ public class Crouch : MonoBehaviour
     {
         if (TCKInput.GetAction("crouchBtn", EActionEvent.Press))
         {
-
+            EventManager.OnChangePlayerState(1);
            
             // Enforce a low head.
             if (headToLower)
@@ -107,6 +107,7 @@ public class Crouch : MonoBehaviour
                 // Reset IsCrouched.
                 IsCrouched = false;
                 SetSpeedOverrideActive(false);
+                EventManager.OnChangePlayerState(2);
                 CrouchEnd?.Invoke();
             }
         }

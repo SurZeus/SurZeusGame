@@ -7,6 +7,7 @@ public class GunSystem : MonoBehaviour
 
     //Gun stats
     [HideInInspector]
+   
     public AdvancedCamRecoil advancedCam;
     [HideInInspector]
     public AdvancedWeaponRecoil advancedWeapon;
@@ -17,6 +18,7 @@ public class GunSystem : MonoBehaviour
     public bool allowButtonHold;
    public  int bulletsLeft, bulletsShot;
     public AudioSource audioSource;
+    public AudioClip HitSound;
     //bools 
     bool shooting, readyToShoot, reloading;
     public InventorySlot TempAmmoSlot = null;
@@ -37,7 +39,7 @@ public class GunSystem : MonoBehaviour
         advancedWeapon = this.gameObject.GetComponent<AdvancedWeaponRecoil>();
         advancedCam = GameObject.Find("WeaponRecoil").GetComponent<AdvancedCamRecoil>(); ;
         GameManager.Instance.OnWeaponDisabled += DisableText;
-        text = GameManager.Instance.weaponAmmunitionUI;
+        text = UIManager.instance.weaponAmmunitionUI;
        // camShake = Camera.main.GetComponent<CamShake>();
         damage = weapon.damage;
         timeBetweenShooting = weapon.timeBetweenShooting;
@@ -90,14 +92,22 @@ public class GunSystem : MonoBehaviour
         Debug.DrawRay(ray.origin, direction * range, Color.red);
         if (Physics.Raycast(ray.origin,direction, out rayHit, range, whatIsEnemy))
         {
-            Debug.Log(rayHit.collider.name);
+          //  Debug.Log(rayHit.collider.name);
            Debug.DrawRay(fpsCam.transform.position, direction);
 
-            if (rayHit.collider.CompareTag("Enemy"))
+            if (rayHit.collider.CompareTag("EnemyHead"))
             {
-                rayHit.collider.GetComponent<Enemy>().getDamage(damage);
+                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
+                //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
             }
-               // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
+
+            else if (rayHit.collider.CompareTag("EnemyBody"))
+            {
+               
+                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+                //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
+            }
+            // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
         }
 
         //ShakeCamera
@@ -183,7 +193,7 @@ public class GunSystem : MonoBehaviour
 
             else if (bulletsToLoad <TempAmmoSlot.stackSize) //jezeli bullLeft jest mniejsze od amo w boxie to
             {
-                Debug.Log("wtf");
+                //Debug.Log("wtf");
                 bulletsLeft += bulletsToLoad;
                 TempAmmoSlot.stackSize -= bulletsToLoad;
                 GameManager.Instance.playerInventory.PrimaryInventorySystem.OnItemSlotChanged(TempAmmoSlot);

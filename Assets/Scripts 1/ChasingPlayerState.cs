@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ChasingPlayerState : StateMachineBehaviour
 {
-
+    
     NavMeshAgent enemyAgent;
     Enemy enemy;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -13,7 +13,7 @@ public class ChasingPlayerState : StateMachineBehaviour
     {
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
         enemy = animator.GetComponentInParent<Enemy>();
-
+        enemy.isChasingPlayer = true;
         enemyAgent.SetDestination(GameManager.Instance.player.transform.position);
         //Debug.Log(enemyAgent.destination.t);
         enemyAgent.speed = 2;
@@ -25,7 +25,7 @@ public class ChasingPlayerState : StateMachineBehaviour
         if (enemyAgent.isActiveAndEnabled)
         {
             enemyAgent.SetDestination(GameManager.Instance.player.transform.position);
-            Debug.Log("Distance to player" + enemyAgent.remainingDistance);
+           // Debug.Log("Distance to player" + enemyAgent.remainingDistance);
             if (enemyAgent.remainingDistance <= enemyAgent.stoppingDistance)
             {
                 animator.SetBool("isAttacking", true);
@@ -46,6 +46,7 @@ public class ChasingPlayerState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
            animator.SetBool("isChasingPlayer", false);
+            enemy.isChasingPlayer = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     //Cameras
     public Camera playerCamera;
     public Camera menuCamera;
-    public TextMeshProUGUI weaponAmmunitionUI;
     public AudioManager audioManager;
 
     public static GameManager Instance;
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+
         menuCamera.gameObject.SetActive(true);
         _menuCanvas.gameObject.SetActive(true);
        // Screen.SetResolution(2080, 960, true);
@@ -57,32 +57,10 @@ public class GameManager : MonoBehaviour
        _playerUI.SetActive(false);
 
     }
-    void Start()
-    {
-
-        player = Player.player;
-    }
+   
 
     // Update is called once per frame
-    void Update()
-    {
-
-
-
-        /*  if (Input.GetKeyDown(KeyCode.L))
-          {
-              SaveGameManager.instance.LoadGame(); 
-          }
-          if (Input.GetKeyDown(KeyCode.O))
-          {
-              SaveData tempSaveData = new SaveData(InventoryManager.inventoryManager.inventory,player.playerHealth,player.transform.position);
-
-              SaveGameManager.instance.SaveGame(tempSaveData);
-          }
-      }*/
-
-
-    }
+    
 
     /*public void SaveGame()
     {
@@ -99,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("error");
+      
         gamePostFX.enabled = true;
         menuPostFX.enabled = false;
         InitializePlayer();
@@ -113,12 +91,14 @@ public class GameManager : MonoBehaviour
 
     public void InitializePlayer()
     {
+
         //player.gameObject.SetActive(true);//tworze gracza
         playerCamera.gameObject.SetActive(true);//ustawiam jego kamere na aktywna
         player.GetComponent<FirstPersonMovement>().enabled = true;
         _playerUI.SetActive(true);
         _playerMovementControlls.SetActive(true);
         playerCamera.GetComponent<AudioListener>().enabled = true;
+        player.IsActive = true;
     }
 
     public void HideUI(GameObject _uiElement)
@@ -137,8 +117,5 @@ public class GameManager : MonoBehaviour
         HideUI(_menuCanvas);
     }
 
-    public void ActivatePlayerUI()
-    {
-        
-    }
+   
 }

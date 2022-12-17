@@ -17,6 +17,6 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        image.fillAmount = enemyToGetHealthFrom.Health / 100;
+        image.fillAmount = enemyToGetHealthFrom.health / 100;
     }
 }

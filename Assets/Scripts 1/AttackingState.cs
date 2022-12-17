@@ -24,7 +24,7 @@ public class AttackingState : StateMachineBehaviour
        // Debug.Log("dISTANCE TO PLAYER: " + (Vector3.Distance(GameManager.Instance.player.transform.position, enemy.transform.position)));
         if (Vector3.Distance(GameManager.Instance.player.transform.position, enemy.transform.position) >=enemyAgent.stoppingDistance)
         {
-            Debug.Log("XdDADSA");
+            //Debug.Log("XdDADSA");
           
             animator.SetBool("isChasingPlayer", true);
             animator.SetBool("isAttacking", false);

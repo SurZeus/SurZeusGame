@@ -10,10 +10,13 @@ public class MouseItemData : MonoBehaviour
 {
     private Transform _playerTransform;
     public Image ItemSprite;
+    public static InventorySlot_UI prevSlot;
     public TextMeshProUGUI ItemCount;
     public InventorySlot AssignedInventorySlot;
-    public InventorySlot_UI tempSlot;
-    public Transform lastItemsPosition;
+   // public InventorySlot_UI tempSlot;
+   // public Transform lastItemsPosition;
+
+   // public InventorySlot_UI previouslyClickedSlot;
     // Start is called before the first frame update
 
     private void Awake()
@@ -38,7 +41,9 @@ public class MouseItemData : MonoBehaviour
     }
     public void UpdateMouseSlot(InventorySlot invSlot, InventorySlot_UI clickedSlot)
     {
-        if (invSlot.itemData.type == ItemType.Equipable)
+       
+        //previouslyClickedSlot = clickedSlot;
+       /* if (invSlot.itemData.type == ItemType.Equipable)
         {
             GameManager.Instance.equipItemButton.gameObject.SetActive(true);
         }
@@ -46,9 +51,9 @@ public class MouseItemData : MonoBehaviour
         if (invSlot.itemData is ConsumableItemData)
         {
             UIManager.instance.consumeItemButton.gameObject.SetActive(true);
-        }
+        }*/
         GameManager.Instance.dropItemButton.gameObject.SetActive(true);
-        tempSlot = clickedSlot;
+        //tempSlot = clickedSlot;
         AssignedInventorySlot.AssignItem(invSlot);
         UpdateMouseSlot();
     }
@@ -60,29 +65,32 @@ public class MouseItemData : MonoBehaviour
        // ItemCount.text = AssignedInventorySlot.stackSize.ToString();
     }
 
-    private void Update()
-    {
-       
-
-    }
+   
     public void ConsumeItem()
     {
         if (AssignedInventorySlot.itemData != null && AssignedInventorySlot.itemData is ConsumableItemData)
         {
             var temp = (ConsumableItemData)AssignedInventorySlot.itemData;
             Player.player.playerStamina += temp.energyValue;
+            Player.player.playerHunger += temp.foodValue;
+            if (Player.player.playerHunger >= 101) Player.player.playerHunger = 100;
+            Player.player.playerThirst += temp.drinkValue;
+            if (Player.player.playerThirst >= 101) Player.player.playerThirst = 100;
+            UIManager.instance.UpdatePlayerStatistics();
             
         }
         UIManager.instance.consumeItemButton.gameObject.SetActive(false);
+        prevSlot.ClearSlot();
+        prevSlot.UpdateUISlot();
         ClearSlot();
-        if (tempSlot != null)
+        /*if (tempSlot != null)
         {
             tempSlot.ClearSlot();
-        }
+        }*/
     }
     public void EquipItem()
     {
-        Debug.Log("equipped");
+      //  Debug.Log("equipped");
         if (AssignedInventorySlot.itemData != null && AssignedInventorySlot.itemData.type == ItemType.Equipable)
         {
             // transform.position = Input.mousePosition;
@@ -124,32 +132,35 @@ public class MouseItemData : MonoBehaviour
 
             if (AssignedInventorySlot.itemData.prefab != null) { 
 
-                Debug.Log("asigned: " + AssignedInventorySlot.itemData);
-                Debug.Log("current: "  + GameManager.Instance.weaponHolder.currentItem);
+               // Debug.Log("asigned: " + AssignedInventorySlot.itemData);
+               // Debug.Log("current: "  + GameManager.Instance.weaponHolder.currentItem);
                 if (GameManager.Instance.weaponHolder.currentItem != null && AssignedInventorySlot.itemData == GameManager.Instance.weaponHolder.currentItem.GetComponent<WeaponHolderItem>().weapon)
                 {
                     GameManager.Instance.weaponHolder.currentItem.gameObject.SetActive(false);
                     GameManager.Instance.weaponHolder.currentItemSlot = null;
 
                 }
+                MouseItemData.prevSlot.ClearSlot();
                 Instantiate(AssignedInventorySlot.itemData.prefab, _playerTransform.position + _playerTransform.forward * 1f, Quaternion.identity);
             }
             if (AssignedInventorySlot.stackSize > 1)
             {
+
+               // Debug.Log("xDdada");
                 AssignedInventorySlot.AddToStack(-1);
-                tempSlot.UpdateUISlot(AssignedInventorySlot);
+                //tempSlot.UpdateUISlot(AssignedInventorySlot);
                 //tempSlot.
                 UpdateMouseSlot();
+                prevSlot.AssignedItemSlot.AssignItem(AssignedInventorySlot);
+                prevSlot.UpdateUISlot();
+                ClearSlot();
             }
 
-            
             else
             {
-                ClearSlot();
-                if (tempSlot != null)
-                {
-                    tempSlot.ClearSlot();
-                }
+               // Debug.Log("cleamn");
+               ClearSlot();
+               
             }
 
 
@@ -162,8 +173,8 @@ public class MouseItemData : MonoBehaviour
         ItemSprite.color = Color.clear;
         ItemSprite.sprite = null;
         GameManager.Instance.dropItemButton.gameObject.SetActive(false);
-        
-         GameManager.Instance.equipItemButton.gameObject.SetActive(false);
+        UIManager.instance.consumeItemButton.gameObject.SetActive(false);
+        GameManager.Instance.equipItemButton.gameObject.SetActive(false);
         
     }
     public static bool IsPointerOverUIObject()

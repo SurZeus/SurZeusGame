@@ -9,35 +9,37 @@ public class EnemySpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject areaCenterPoint;
     public static UnityAction enemyHasDied;
+
+    private WaitForSeconds waitForSeconds;
+    public float SpawnDelay;
+
     // Start is called before the first frame update
     void Start()
     {
-
+     
         enemyHasDied += SpawnEnemy;
         foreach (Transform child in transform)
         {
             spawnPoints.Add(child.gameObject);
         }
-        //child is your child transform
+     
 
-        spawnOnStart();
+        Invoke("SpawnOnStart", 5f);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Awake()
     {
-        
+        waitForSeconds = new WaitForSeconds(SpawnDelay);
     }
 
-    public void spawnOnStart()
+    public void SpawnOnStart()
     {
         foreach(GameObject i in spawnPoints)
         {
 
-         
-            var temp1 = InstantiateEnemy(i);
-            temp1.GetComponent<Enemy>().centrePoint = areaCenterPoint.transform;
-
+            var tempEnemy = InstantiateEnemy(i);
+            tempEnemy.GetComponent<Enemy>().centrePoint = areaCenterPoint.transform;
 
         }
     }
@@ -61,7 +63,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     public IEnumerator spawnEnemyCorutine()
     {
-        yield return new WaitForSeconds(10f);
+        yield return waitForSeconds;
         SpawnNewEnemy();
     }
 }

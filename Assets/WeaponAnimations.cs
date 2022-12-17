@@ -8,29 +8,23 @@ public class WeaponAnimations : MonoBehaviour
     public Animator animator;
     private void OnEnable()
     {
-        FirstPersonMovement.PlayerIsMoving += WalkingWithTheGun;
+        EventManager.playerIsWalking += WalkingWithTheGun;
     } private void OnDisable()
     {
-        FirstPersonMovement.PlayerIsMoving -= WalkingWithTheGun;
+        EventManager.playerIsWalking -= WalkingWithTheGun;
     }
     private void Awake()
     {
         animator = this.GetComponent<Animator>();
     }
-    void Start()
-    {
-        
-    }
+ 
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
-    public void WalkingWithTheGun(int state)
+    public void WalkingWithTheGun(bool state)
     {
-        if(state == 1)
+        if(state == true)
         animator.SetBool("isWalking", true);
         else
         {

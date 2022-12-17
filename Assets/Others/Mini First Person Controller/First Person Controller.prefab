@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceThreshold: 0.15
-  isGrounded: 1
+  isGrounded: 0
 --- !u!1 &1773623360729482
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +370,6 @@ Transform:
   - {fileID: 4464631255176552}
   - {fileID: 4773208539257838}
   - {fileID: 687180948}
-  - {fileID: 5411355975246594066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1254,83 +1253,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &8515340149528104485
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4207293392497186}
-    m_Modifications:
-    - target: {fileID: 4372709365824422829, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.488
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4413023543557490507, guid: b028ca504b68ff64885c0476be7df793,
-        type: 3}
-      propertyPath: m_Name
-      value: First Person Camera
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b028ca504b68ff64885c0476be7df793, type: 3}
---- !u!4 &5411355975246594066 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4410272157859073591, guid: b028ca504b68ff64885c0476be7df793,
-    type: 3}
-  m_PrefabInstance: {fileID: 8515340149528104485}
-  m_PrefabAsset: {fileID: 0}

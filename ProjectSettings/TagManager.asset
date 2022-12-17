@@ -11,6 +11,8 @@ TagManager:
   - UI
   - DropItem
   - WeaponHolderElement
+  - EnemyHead
+  - EnemyBody
   layers:
   - Default
   - TransparentFX
@@ -24,9 +26,9 @@ TagManager:
   - Interactable
   - mainMenuPostFX
   - WeaponCamera
-  - 
-  - 
-  - 
+  - ItemPickUp
+  - Enemy
+  - EnemyHitBox
   - 
   - 
   - 
