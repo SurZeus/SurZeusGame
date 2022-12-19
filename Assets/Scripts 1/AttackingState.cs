@@ -12,7 +12,7 @@ public class AttackingState : StateMachineBehaviour
     {
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
         enemy = animator.GetComponentInParent<Enemy>();
-
+       // enemy.AttackPlayer();
        // enemyAgent.SetDestination(GameManager.Instance.player.transform.position);
         //Debug.Log(enemyAgent.destination.t);
      

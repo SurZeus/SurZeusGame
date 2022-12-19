@@ -20,7 +20,7 @@ public class WalkingToNoiseState : StateMachineBehaviour
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
         //enemyAgent.speed = 1;
         enemy = animator.GetComponentInParent<Enemy>();
-        enemy.currentDestination = GameManager.Instance.player.transform;
+        enemy.currentDestination = GameManager.Instance.player.transform.position;
 
 
         range = animator.GetComponentInParent<Enemy>().range;
@@ -45,7 +45,7 @@ public class WalkingToNoiseState : StateMachineBehaviour
 
       //  Debug.Log(enemyAgent.remainingDistance);
 
-        if(enemyAgent.destination == enemy.currentDestination.position)
+        if(enemyAgent.destination == enemy.currentDestination)
         {
             if (enemyAgent.isActiveAndEnabled)
             {
@@ -59,7 +59,7 @@ public class WalkingToNoiseState : StateMachineBehaviour
 
         else
         {
-            enemyAgent.SetDestination(enemy.currentDestination.position);
+            enemyAgent.SetDestination(enemy.currentDestination);
         }
        
 

@@ -5,6 +5,7 @@ using TouchControlsKit;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -117,5 +118,9 @@ public class GameManager : MonoBehaviour
         HideUI(_menuCanvas);
     }
 
-   
+    public void  NewGameFromDeathScreen()
+    {
+        SceneManager.LoadScene("Underground", LoadSceneMode.Single);
+    }
+  
 }

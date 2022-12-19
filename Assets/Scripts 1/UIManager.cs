@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject consumeItemButton;
     public TextMeshProUGUI healthPercentage;
     public TextMeshProUGUI weaponAmmunitionUI;
+    public GameObject deathScreen;
     void Start()
     {
         
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        EventManager.playerDied += ShowDeathScreen;
         EventManager.isSprinting += UpdateStaminaUI;
         EventManager.isStarving += UpdateHungerAndThirstUI;
         EventManager.isLosingHealth += UpdateHealth;
@@ -84,5 +86,10 @@ public class UIManager : MonoBehaviour
         UpdateStaminaUI(true);
     }
 
+    public void ShowDeathScreen()
+    {
+        if(deathScreen!=null)
+        deathScreen.SetActive(true);
+    }
     
 }

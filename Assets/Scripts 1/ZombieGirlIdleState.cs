@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using CodeMonkey.HealthSystemCM;
+using UnityEngine.AI;
+
 public class ZombieGirlIdleState : StateMachineBehaviour
 {
-    float timer = 0;
+   float timer = 0;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    
     //}
 
-   
+   public Enemy enemy;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+       
+       
+        Debug.Log("Entered Idle State");
         timer = 0;
     }
 

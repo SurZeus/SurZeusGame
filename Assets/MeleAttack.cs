@@ -5,10 +5,10 @@ using TouchControlsKit;
 
 public class MeleAttack : MonoBehaviour
 {
-   
 
-   
-   
+
+
+
     public bool isAttacking;
     public int damage;
     public LayerMask layer;
@@ -19,17 +19,17 @@ public class MeleAttack : MonoBehaviour
     public AudioClip HitSound;
     public AudioSource audioSource;
     public Animator anim;
-   
-  
+    public WeaponHolderItem weaponHolderItem;
 
-   
-   
+
+
+
 
     void Start()
     {
 
-       
-        damage = 25;
+        weaponHolderItem = GetComponent<WeaponHolderItem>();
+        damage = weaponHolderItem.weapon.damage;
         anim = Axe.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         isAttacking = false;
@@ -40,11 +40,11 @@ public class MeleAttack : MonoBehaviour
     {
         MyInput();
 
-       
+
     }
     public void MyInput()
     {
-        if (TCKInput.GetAction("shootBtn", EActionEvent.Down))
+        if (TCKInput.GetAction("shootBtn", EActionEvent.Down) || TCKInput.GetAction("shootBtn2", EActionEvent.Down))
         {
             if (CanAttack)
             {

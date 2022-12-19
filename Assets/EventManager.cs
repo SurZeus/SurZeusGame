@@ -10,6 +10,9 @@ public class EventManager : MonoBehaviour
     public static void OnIsStarving() => isStarving?.Invoke(false);
 
 
+    public static event Action playerDied;
+    public static void OnPlayerDied() => playerDied?.Invoke();
+
 
     public static event Action isLosingHealth;
     public static void OnIsLosingHealth() => isLosingHealth?.Invoke();

@@ -7,7 +7,9 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
     public Transform centrePoint;
     public float range;
     NavMeshAgent enemyAgent;
-     Enemy enemy;
+    Enemy enemy;
+    float timer = 0;
+    Vector3 destination;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -16,38 +18,29 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 
     {
+        Debug.Log("Entered walking state");
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
-        enemyAgent.speed = 1;
         enemy = animator.GetComponentInParent<Enemy>();
-     
-
-        range = animator.GetComponentInParent<Enemy>().range;
-        centrePoint = enemy.centrePoint;
-     
+        enemy.GoToRandomPoint();
        
 
-     
-        Vector3 point;
-        if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
-        {
-            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-            enemyAgent.SetDestination(point);
-          //  Debug.Log(enemy.remainingDistance);
-        }
 
     }
-    
+
 
 
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-   {
+    {
+        timer += Time.deltaTime;
+        Debug.DrawRay(destination, Vector3.up, Color.blue, 1.0f);
+        Debug.DrawLine(enemy.gameObject.transform.position,enemy.currentDestination,Color.red);
         //jezeli patroluje i nie slyszal wystrzalu
         if (enemy.heardNoise == false)
         {
 
-            if (enemyAgent.isActiveAndEnabled)
+            if (enemyAgent.isActiveAndEnabled && timer >=2f)
             {
                 if (enemyAgent.remainingDistance <= enemyAgent.stoppingDistance)
                 {
@@ -63,8 +56,8 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
         }
 
 
-       
-      
+
+
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -74,44 +67,23 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
 
     }
 
-// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-//{
-//    
-//}
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
-// OnStateMove is called right after Animator.OnAnimatorMove()
-//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-//{
-//    // Implement code that processes and affects root motion
-//}
+    // OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
 
-// OnStateIK is called right after Animator.OnAnimatorIK()
-//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-//{
-//    // Implement code that sets up animation IK (inverse kinematics)
-//}
-bool RandomPoint(Vector3 center, float range, out Vector3 result)
-{
-
-    Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-    NavMeshHit hit;
-    if (NavMesh.SamplePosition(randomPoint, out hit, 10.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
-    {
-        //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-        //or add a for loop like in the documentation
-        result = hit.position;
-       /* if(Vector3.Distance(hit.position,enemy.transform.position) <=3)
-            {
-                hit.position += new Vector3(5, 5, 5);
-            }*/
-        return true;
-    }
-
-    result = Vector3.zero;
-    return false;
-}
+    // OnStateIK is called right after Animator.OnAnimatorIK()
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that sets up animation IK (inverse kinematics)
+    //}
 
 
 }
-

@@ -108,6 +108,11 @@ public class Player : MonoBehaviour
     {
         playerHealth -= value;
         EventManager.OnIsLosingHealth();
+        if (playerHealth <= 0)
+        {
+            EventManager.OnPlayerDied();
+        }
+        
     }
 
     public void ChangePlayerState(int state_id) //0,1,2,3,4,5
