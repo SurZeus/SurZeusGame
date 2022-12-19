@@ -64,7 +64,7 @@ public class FirstPersonMovement : MonoBehaviour
             else if (TCKInput.GetAction("crouchBtn", EActionEvent.Press)) EventManager.OnChangePlayerState(1);
           
 
-            Player.player.WeaponHolder.GetComponent<WeaponController>().anim.SetBool("isWalking", true);
+            //Player.player.WeaponHolder.GetComponent<WeaponController>().anim.SetBool("isWalking", true);
           
         }
         else

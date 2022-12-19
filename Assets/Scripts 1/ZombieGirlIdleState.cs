@@ -19,7 +19,7 @@ public class ZombieGirlIdleState : StateMachineBehaviour
     {
        
        
-        Debug.Log("Entered Idle State");
+       // Debug.Log("Entered Idle State");
         timer = 0;
     }
 

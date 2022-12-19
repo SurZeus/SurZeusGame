@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour,IDamagable
     public AudioSource audioSource;
     public int health;
     public float Damage;
+    public GameObject bloodParticle;
 
     
     // Start is called before the first frame update
@@ -159,7 +160,9 @@ public class Enemy : MonoBehaviour,IDamagable
 
     public void AttackPlayer()
     {
+        if (getDistanceToPlayer() <= 2f)
         Player.player.DecreaseHealth(Damage);
+        else Debug.Log("Player TOO FAR");
     }
 }
 

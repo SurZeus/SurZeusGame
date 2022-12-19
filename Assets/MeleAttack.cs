@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TouchControlsKit;
+using Unity.VisualScripting;
+using UnityEngine.InputSystem.HID;
 
 public class MeleAttack : MonoBehaviour
 {
@@ -20,17 +22,17 @@ public class MeleAttack : MonoBehaviour
     public AudioSource audioSource;
     public Animator anim;
     public WeaponHolderItem weaponHolderItem;
-
+    public BoxCollider hitPoint;
 
 
 
 
     void Start()
     {
-
+        hitPoint = GetComponentInChildren<MeleHitPoint>().gameObject.GetComponent<BoxCollider>();
         weaponHolderItem = GetComponent<WeaponHolderItem>();
         damage = weaponHolderItem.weapon.damage;
-        anim = Axe.GetComponent<Animator>();
+        anim = gameObject.GetComponentInParent<Animator>();
         audioSource = GetComponent<AudioSource>();
         isAttacking = false;
     }
@@ -63,24 +65,7 @@ public class MeleAttack : MonoBehaviour
         // debug Ray
         Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, rayLength,layer))
-        {
-            if (hit.collider != null && hit.collider.CompareTag("EnemyHead"))
-            {
-                Debug.Log("EnemyHit");
-                StartCoroutine(damageEnemyWithDelay(0.5f, hit,true));
-                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
-
-            }
-            else if (hit.collider != null && hit.collider.CompareTag("EnemyBody"))
-            {
-                Debug.Log("EnemyHit");
-                StartCoroutine(damageEnemyWithDelay(0.5f, hit, false));
-                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
-            }
-
-
-        }
+        
         CanAttack = false;
         isAttacking = true;
         anim.SetTrigger("Attack");
@@ -110,6 +95,26 @@ public class MeleAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (oneShootKill) hit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
         else hit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+    }
+
+    public void MeleDamage(Collider enemy)
+    {
+        
+        //Debug.Log("damagfe");
+        if(enemy.CompareTag("EnemyBody"))
+        enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+        else if(enemy.CompareTag("EnemyHead"))
+        enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(100);
+
+    }
+
+    public void SetHitPoint()
+    {
+        if(hitPoint.enabled)
+        hitPoint.enabled = false;
+        else
+       hitPoint.enabled = true;
+
     }
 
 }

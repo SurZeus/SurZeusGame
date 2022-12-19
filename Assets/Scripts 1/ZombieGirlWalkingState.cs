@@ -18,7 +18,7 @@ public class ZombieGirlWalkingState : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 
     {
-        Debug.Log("Entered walking state");
+        //Debug.Log("Entered walking state");
         enemyAgent = animator.GetComponentInParent<Enemy>().enemyAgent;
         enemy = animator.GetComponentInParent<Enemy>();
         enemy.GoToRandomPoint();
