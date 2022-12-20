@@ -30,7 +30,8 @@ public class AudioManager : MonoBehaviour
 
    public IEnumerator playSoundWithDelay(AudioClip clip, float delay)
     {
-        yield return new WaitForSeconds(delay);
+       
         miscAudio.PlayOneShot(clip);
+        yield return null;
     }
 }

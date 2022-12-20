@@ -97,13 +97,15 @@ public class GunSystem : MonoBehaviour
 
             if (rayHit.collider.CompareTag("EnemyHead"))
             {
+                Debug.Log("headshot");
                 rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
                 //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
+                
             }
 
             else if (rayHit.collider.CompareTag("EnemyBody"))
             {
-               
+                Debug.Log("bodyshot");
                 rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
                 //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
             }

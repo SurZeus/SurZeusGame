@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e7611d31ee3274199729f02d487134, type: 3}
   m_Name: WaterBottle
   m_EditorClassIdentifier: 
+  rarityLevel: 2
   id: 6
   type: 1
   MaxStackSize: 3

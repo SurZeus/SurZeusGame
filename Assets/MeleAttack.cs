@@ -23,12 +23,14 @@ public class MeleAttack : MonoBehaviour
     public Animator anim;
     public WeaponHolderItem weaponHolderItem;
     public BoxCollider hitPoint;
-
+    public bool canDoDamage;
+    
 
 
 
     void Start()
     {
+        canDoDamage = false;
         hitPoint = GetComponentInChildren<MeleHitPoint>().gameObject.GetComponent<BoxCollider>();
         weaponHolderItem = GetComponent<WeaponHolderItem>();
         damage = weaponHolderItem.weapon.damage;
@@ -99,21 +101,25 @@ public class MeleAttack : MonoBehaviour
 
     public void MeleDamage(Collider enemy)
     {
-        
-        //Debug.Log("damagfe");
-        if(enemy.CompareTag("EnemyBody"))
-        enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damage);
-        else if(enemy.CompareTag("EnemyHead"))
-        enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(100);
 
+        if (canDoDamage)
+        {
+            StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0f));
+            Debug.Log("damagfe");
+            if (enemy.CompareTag("EnemyBody"))
+                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+            else if (enemy.CompareTag("EnemyHead"))
+                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(100);
+        }
     }
 
+    
     public void SetHitPoint()
     {
-        if(hitPoint.enabled)
-        hitPoint.enabled = false;
-        else
-       hitPoint.enabled = true;
+        if (hitPoint.enabled == true)hitPoint.enabled = false;
+        else hitPoint.enabled = true;
+        if (canDoDamage)canDoDamage = false;
+        else canDoDamage = true;
 
     }
 

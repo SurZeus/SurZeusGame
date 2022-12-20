@@ -9,6 +9,7 @@ public class EnemySpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject areaCenterPoint;
     public static UnityAction enemyHasDied;
+    public EnemyManager enemyManager;
 
     private WaitForSeconds waitForSeconds;
     public float SpawnDelay;
@@ -40,6 +41,7 @@ public class EnemySpawnManager : MonoBehaviour
 
             var tempEnemy = InstantiateEnemy(i);
             tempEnemy.GetComponent<Enemy>().centrePoint = areaCenterPoint.transform;
+            tempEnemy.gameObject.transform.SetParent(enemyManager.transform);
 
         }
     }

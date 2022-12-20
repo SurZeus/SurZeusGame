@@ -14,6 +14,7 @@ Weapon,Food,Ammunition,Equipable
 [CreateAssetMenu(menuName ="Inventory Item Data")]
 public class InventoryItemData : ScriptableObject
 {
+    public int rarityLevel; //more equals better
     public int id = -1;
     public ItemType type;
     public int MaxStackSize;

@@ -832,7 +832,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.8833333
+  - time: 0.7
     functionName: SetHitPoint
     data: 
     objectReferenceParameter: {fileID: 0}

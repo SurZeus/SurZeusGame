@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 5808290303746140554}
   - component: {fileID: 5808290303746140555}
   - component: {fileID: 5808290303746140552}
-  - component: {fileID: 36066606}
   m_Layer: 13
   m_Name: Zombie01
   m_TagString: Enemy
@@ -298,19 +297,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &36066606
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5808290303746140564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9165626, y: 0.31143495, z: 1.0849814}
-  m_Center: {x: 0.04350112, y: 1.73, z: 0.02535422}
 --- !u!1001 &5808290303745757965
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class fadeA : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        Debug.Log("xdd");
+       
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -9,9 +9,9 @@ public class MeleHitPoint : MonoBehaviour
     public float damage;
     void Start()
     {
-       hitPoint = GetComponent<BoxCollider>();
+        hitPoint = GetComponent<BoxCollider>();
         damage = GetComponentInParent<MeleAttack>().damage;
-        
+
     }
 
     // Update is called once per frame
@@ -19,10 +19,19 @@ public class MeleHitPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       // StartCoroutine(DisableCollider());
         Debug.Log(other.gameObject.tag);
-       // Debug.Log("testuje hita");
-            GetComponentInParent<MeleAttack>().MeleDamage(other);
-        Instantiate(other.GetComponentInParent<Enemy>().bloodParticle, gameObject.transform.position,Quaternion.identity);
-        
+        // Debug.Log("testuje hita");
+      
+        GetComponentInParent<MeleAttack>().MeleDamage(other);
+        Instantiate(other.GetComponentInParent<Enemy>().bloodParticle, gameObject.transform.position, Quaternion.identity);
+
+
+    }
+
+    IEnumerator DisableCollider()
+    {
+        hitPoint.enabled = false;
+        yield return null;
     }
 }
