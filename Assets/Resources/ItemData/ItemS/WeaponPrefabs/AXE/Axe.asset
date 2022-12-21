@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0d3b2417608504195cf3ca92d6e1de, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  rarityLevel: 1
+  rarityLevel: 4
   id: 0
   type: 3
   MaxStackSize: 1

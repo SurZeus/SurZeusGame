@@ -13,22 +13,21 @@ public class ItemSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InventoryItemData tempItem = new InventoryItemData();
-        StartCoroutine(testCorutine());
+        GetComponentInParent<ItemSpawnArea>().itemSpawns.Add(gameObject.GetComponent<ItemSpawn>());
+      //  InventoryItemData tempItem = new InventoryItemData();
+       
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+ 
     public void SpawnItem()
     {
+        Debug.Log("xD");
       var itemToSpawn = PickItemToSpawn();
         var spawnedItem = Instantiate(itemToSpawn.prefab, gameObject.transform.position, Quaternion.identity);
         spawnedItem.gameObject.transform.SetParent(gameObject.transform);
 
+    
 
 
     }
@@ -58,14 +57,7 @@ public class ItemSpawn : MonoBehaviour
     }
 
     
-    IEnumerator testCorutine()
-    {
-        yield return new WaitForSeconds(2f);
-        SpawnItem();
-        yield return new WaitForSeconds(2f);
-        DestroyObject(gameObject.transform.GetChild(0).gameObject);
-        StartCoroutine(testCorutine());
-    }
+   
 
     private List<int> shuffleGOList(List<int> inputList)
     {    //take any list of GameObjects and return it with Fischer-Yates shuffle
@@ -86,5 +78,14 @@ public class ItemSpawn : MonoBehaviour
         }
 
         return tempList;
+    }
+
+
+    public void ClearItem()
+    {
+        if(transform.childCount !=0 )
+        {
+            DestroyObject(gameObject.transform.GetChild(0).gameObject);
+        }
     }
 }

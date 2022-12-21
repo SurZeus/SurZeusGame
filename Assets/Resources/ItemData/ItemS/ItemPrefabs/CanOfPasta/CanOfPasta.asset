@@ -22,3 +22,4 @@ MonoBehaviour:
   drinkValue: 5
   foodValue: 30
   energyValue: 5
+  healthValue: 0

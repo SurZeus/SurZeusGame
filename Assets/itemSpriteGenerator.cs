@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class itemSpriteGenerator : MonoBehaviour
 {
-  /*  Camera cam;
+   /* Camera cam;
     public string pathFolder;
 
     public List<GameObject> sceneObjects;
@@ -79,5 +79,5 @@ public class itemSpriteGenerator : MonoBehaviour
         AssetDatabase.Refresh();
 #endif
 
-         }*/
-    }
+    }*/
+}

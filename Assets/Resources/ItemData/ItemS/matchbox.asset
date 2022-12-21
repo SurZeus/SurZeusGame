@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b15bf8489a06d5439e767c14000c83d, type: 3}
   m_Name: matchbox
   m_EditorClassIdentifier: 
+  rarityLevel: 0
   id: 1
   type: 1
   MaxStackSize: 2

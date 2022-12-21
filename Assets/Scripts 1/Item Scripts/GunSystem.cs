@@ -7,7 +7,7 @@ public class GunSystem : MonoBehaviour
 
     //Gun stats
     [HideInInspector]
-   
+
     public AdvancedCamRecoil advancedCam;
     [HideInInspector]
     public AdvancedWeaponRecoil advancedWeapon;
@@ -16,7 +16,7 @@ public class GunSystem : MonoBehaviour
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
-   public  int bulletsLeft, bulletsShot;
+    public int bulletsLeft, bulletsShot;
     public AudioSource audioSource;
     public AudioClip HitSound;
     //bools 
@@ -30,8 +30,8 @@ public class GunSystem : MonoBehaviour
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
-   //public CamShake camShake;
-   // public float camShakeMagnitude, camShakeDuration;
+    //public CamShake camShake;
+    // public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI text;
 
     private void Awake()
@@ -40,7 +40,7 @@ public class GunSystem : MonoBehaviour
         advancedCam = GameObject.Find("WeaponRecoil").GetComponent<AdvancedCamRecoil>(); ;
         GameManager.Instance.OnWeaponDisabled += DisableText;
         text = UIManager.instance.weaponAmmunitionUI;
-       // camShake = Camera.main.GetComponent<CamShake>();
+        // camShake = Camera.main.GetComponent<CamShake>();
         damage = weapon.damage;
         timeBetweenShooting = weapon.timeBetweenShooting;
         spread = weapon.spread;
@@ -50,21 +50,21 @@ public class GunSystem : MonoBehaviour
         bulletsLeft = 0;
         readyToShoot = true;
         bulletsPerTap = 1;
-        
+
         //timeBetweenShooting = 0.15f;
     }
     private void Update()
     {
-       
+
         MyInput();
-        
+
         text.SetText(bulletsLeft + " / " + magazineSize);
     }
     private void MyInput()
     {
-        if (allowButtonHold) shooting = TCKInput.GetButton("shootBtn");
+        if (allowButtonHold) shooting = TCKInput.GetButton("shootBtn") || TCKInput.GetButton("shootBtn2");
 
-        else shooting = TCKInput.GetButtonDown("shootBtn");
+        else shooting = TCKInput.GetButtonDown("shootBtn") || TCKInput.GetButtonDown("shootBtn2");
 
         if (TCKInput.GetButtonDown("reloadBtn") && bulletsLeft < magazineSize && !reloading) Reload();
 
@@ -100,7 +100,8 @@ public class GunSystem : MonoBehaviour
                 Debug.Log("headshot");
                 rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
                 //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
-                
+                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
+                Instantiate(rayHit.collider.gameObject.GetComponentInParent<Enemy>().bloodParticle, rayHit.collider.gameObject.transform.position, Quaternion.identity);
             }
 
             else if (rayHit.collider.CompareTag("EnemyBody"))
@@ -108,6 +109,8 @@ public class GunSystem : MonoBehaviour
                 Debug.Log("bodyshot");
                 rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
                 //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
+                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
+                Instantiate(rayHit.collider.gameObject.GetComponentInParent<Enemy>().bloodParticle, rayHit.collider.gameObject.transform.position, Quaternion.identity);
             }
             // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
         }

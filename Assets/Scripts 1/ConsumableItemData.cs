@@ -8,4 +8,5 @@ public class ConsumableItemData : InventoryItemData
     public int drinkValue;
     public int foodValue;
     public int energyValue;
+    public int healthValue;
 }

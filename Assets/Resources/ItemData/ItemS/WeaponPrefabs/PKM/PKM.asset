@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46fe35f3f4d285439fc6594f77523f0, type: 3}
   m_Name: PKM
   m_EditorClassIdentifier: 
-  rarityLevel: 2
+  rarityLevel: 1
   id: 4
   type: 3
   MaxStackSize: 1

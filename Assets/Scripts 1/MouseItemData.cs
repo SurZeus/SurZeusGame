@@ -75,6 +75,7 @@ public class MouseItemData : MonoBehaviour
             Player.player.playerHunger += temp.foodValue;
             if (Player.player.playerHunger >= 101) Player.player.playerHunger = 100;
             Player.player.playerThirst += temp.drinkValue;
+            Player.player.IncreaseHealth(temp.healthValue);
             if (Player.player.playerThirst >= 101) Player.player.playerThirst = 100;
             UIManager.instance.UpdatePlayerStatistics();
             

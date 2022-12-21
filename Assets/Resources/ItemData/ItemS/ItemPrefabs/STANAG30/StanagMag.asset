@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26cd1368be928f24ca919321d84848d0, type: 3}
   m_Name: StanagMag
   m_EditorClassIdentifier: 
+  rarityLevel: 0
   id: 3
   type: 2
   MaxStackSize: 100

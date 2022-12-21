@@ -115,6 +115,17 @@ public class Player : MonoBehaviour
         
     }
 
+    public void IncreaseHealth(float value)
+    {
+        playerHealth += value;
+        EventManager.OnIsLosingHealth();
+        if (playerHealth >=100)
+        {
+            playerHealth = 100;
+        }
+
+    }
+
     public void ChangePlayerState(int state_id) //0,1,2,3,4,5
     {
         playerState = state_id;

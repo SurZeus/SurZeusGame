@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46fe35f3f4d285439fc6594f77523f0, type: 3}
   m_Name: m4a1
   m_EditorClassIdentifier: 
-  rarityLevel: 1
+  rarityLevel: 2
   id: 2
   type: 3
   MaxStackSize: 1
