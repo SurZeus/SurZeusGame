@@ -8,20 +8,24 @@ public class ItemSpawnArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
 
-        ItemManager.itemManager.itemSpawnAreas.Add(gameObject.GetComponent<ItemSpawnArea>());
+       
+       
     }
 
     private void Awake()
     {
-      
+        Invoke("AddToItemManager", 2f);  
     }
 
+    private void OnEnable()
+    {
+        
+    }
     // Update is called once per frame
-   
 
-   public void SpawnOnStart()
+
+    public void SpawnOnStart()
     {
         foreach(ItemSpawn x in itemSpawns)
         {
@@ -40,5 +44,9 @@ public class ItemSpawnArea : MonoBehaviour
         {
             x.SpawnItem();
         }
+    }
+    public void AddToItemManager()
+    {
+        ItemManager.itemManager.itemSpawnAreas.Add(gameObject.GetComponent<ItemSpawnArea>());
     }
 }

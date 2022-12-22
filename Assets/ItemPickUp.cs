@@ -25,6 +25,10 @@ public class ItemPickUp : MonoBehaviour
     {
         id = GetComponent<UniqueID>().ID;
         SaveManager.data.activeItems.Add(id, itemSaveData);
+        if(item is AmmoItem)
+        {
+            quantity = Random.Range(1, 10);
+        }
     }
 
     // Update is called once per frame

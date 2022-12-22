@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e7611d31ee3274199729f02d487134, type: 3}
   m_Name: Painkillers
   m_EditorClassIdentifier: 
-  rarityLevel: 5
+  rarityLevel: 80
   id: 12
   type: 1
   MaxStackSize: 5

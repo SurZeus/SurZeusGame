@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e7611d31ee3274199729f02d487134, type: 3}
   m_Name: FirstAidKitLVL1
   m_EditorClassIdentifier: 
-  rarityLevel: 3
+  rarityLevel: 40
   id: 8
   type: 0
   MaxStackSize: 1

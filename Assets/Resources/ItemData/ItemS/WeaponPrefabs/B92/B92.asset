@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46fe35f3f4d285439fc6594f77523f0, type: 3}
   m_Name: B92
   m_EditorClassIdentifier: 
-  rarityLevel: 4
+  rarityLevel: 40
   id: 13
   type: 3
   MaxStackSize: 1

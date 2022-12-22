@@ -7,12 +7,13 @@ public class ItemSpawn : MonoBehaviour
 {
 
     public List<InventoryItemData> itemsThatCanSpawnAtThisSpawn;
-    public List<int> pool1;
-    public List<int> pool2;
+ 
     public InventoryItemData tempItem;
+   
     // Start is called before the first frame update
     void Start()
     {
+        
         GetComponentInParent<ItemSpawnArea>().itemSpawns.Add(gameObject.GetComponent<ItemSpawn>());
       //  InventoryItemData tempItem = new InventoryItemData();
        
@@ -22,63 +23,29 @@ public class ItemSpawn : MonoBehaviour
  
     public void SpawnItem()
     {
-        Debug.Log("xD");
-      var itemToSpawn = PickItemToSpawn();
-        var spawnedItem = Instantiate(itemToSpawn.prefab, gameObject.transform.position, Quaternion.identity);
-        spawnedItem.gameObject.transform.SetParent(gameObject.transform);
+        int isActive; //1 yes 2 no
+        isActive = Random.Range(0, 2);
 
-    
-
-
-    }
-
-    private InventoryItemData PickItemToSpawn()
-    {
-        
-        List<int> pool = new List<int>();
-        for(int i = 0; i < itemsThatCanSpawnAtThisSpawn.Count; i++)
+        if (isActive == 1)
         {
-            for(int j = 0; j < itemsThatCanSpawnAtThisSpawn[i].rarityLevel; j++)
+            var itemToSpawn = SelectRandomItem();
+            if (itemToSpawn != null)
             {
-                pool.Add(itemsThatCanSpawnAtThisSpawn[i].id);
+                var spawnedItem = Instantiate(itemToSpawn.prefab, gameObject.transform.position, Quaternion.identity);
+                spawnedItem.gameObject.transform.SetParent(gameObject.transform);
             }
+            else Debug.Log("no items to spawn");
+
         }
-        pool1 = pool;
+        Debug.Log("spawn deactivated");
 
-
-        pool = shuffleGOList(pool);
-        pool2 = pool;
-        int index = Random.Range(0, pool.Count);
-
-        
-       
-        tempItem = itemsThatCanSpawnAtThisSpawn.Find((x) => x.id == pool[index]);
-        return tempItem;
     }
 
+   
     
    
 
-    private List<int> shuffleGOList(List<int> inputList)
-    {    //take any list of GameObjects and return it with Fischer-Yates shuffle
-        int i = 0;
-        int t = inputList.Count;
-        int r = 0;
-        int p = 0;
-        List<int> tempList = new List<int>();
-        tempList.AddRange(inputList);
-
-        while (i < t)
-        {
-            r = Random.Range(i, tempList.Count);
-            p = tempList[i];
-            tempList[i] = tempList[r];
-            tempList[r] = p;
-            i++;
-        }
-
-        return tempList;
-    }
+   
 
 
     public void ClearItem()
@@ -87,5 +54,26 @@ public class ItemSpawn : MonoBehaviour
         {
             DestroyObject(gameObject.transform.GetChild(0).gameObject);
         }
+    }
+
+    public InventoryItemData SelectRandomItem()
+    {
+        int randomNumber = Random.Range(0, 101);
+        List<InventoryItemData> possibleItemsToAdd = new List<InventoryItemData>();
+        foreach(InventoryItemData item in itemsThatCanSpawnAtThisSpawn)
+        {
+            if(randomNumber<= item.rarityLevel)
+            {
+                possibleItemsToAdd.Add(item);
+            }
+        }
+
+        if (possibleItemsToAdd.Count > 0)
+        {
+            return possibleItemsToAdd[Random.Range(0, possibleItemsToAdd.Count)];
+        }
+
+        else return null;
+
     }
 }

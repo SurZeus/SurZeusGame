@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ItemManager : MonoBehaviour
 {
     public static ItemManager itemManager;
@@ -10,14 +11,14 @@ public class ItemManager : MonoBehaviour
     public float respawnTime;
     private void Start()
     {
-        timer = -5;
-        respawnTime = 10f;
+        timer = -10;
+        respawnTime = 700f;
         itemManager = this;
     }
 
     private void Awake()
     {
-        Invoke("SpawnOnStart", 5f);
+        Invoke("SpawnOnStart", 10f);
     }
     private void Update()
     {
