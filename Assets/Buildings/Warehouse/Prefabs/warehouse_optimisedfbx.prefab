@@ -33,7 +33,7 @@ Transform:
   - {fileID: 252044529282197181}
   - {fileID: 1872280450760125383}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!205 &6797369884660823843
 LODGroup:
@@ -49,7 +49,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.090925075
+  - screenRelativeHeight: 0.22628501
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4174300925902892769}
@@ -66,9 +66,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388468646482516712}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 209.89124, y: 147.89534, z: 155.49365}
   m_Center: {x: -0.30461463, y: -20.388046, z: -60.33984}
 --- !u!1 &3189791418277947025

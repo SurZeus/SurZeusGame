@@ -53,21 +53,7 @@ public class Player : MonoBehaviour
         {
             DrainHungerAndThirst();
         }
-        /* Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-         RaycastHit hit;
-         if (Physics.Raycast(ray, out hit, 5f) && hit.collider.tag == "Usable" && TCKInput.GetAction("useBtn", EActionEvent.Down))
-         {
-             Debug.Log("dadad");
-             Debug.Log(hit.collider.transform.gameObject.name);
-
-             //Ambulans
-
-                 Debug.Log("key: " + hit.transform.parent.gameObject.name);
-             hit.transform.parent.gameObject.GetComponent<Ambulance>().Use(hit.collider.transform.gameObject);
-
-
-         }
-     }*/
+       
 
     }
 
