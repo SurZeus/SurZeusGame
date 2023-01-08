@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-
-    //UI
+  //  MainManager mainManager;
+    private bool isGamePaused;
     [SerializeField]
     private GameObject _playerMovementControlls;
     [SerializeField]
@@ -37,31 +37,64 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Player player;
     [SerializeField] float playerScore;
-
+    public  Database Database;
     public UnityAction OnWeaponDisabled;
     // Start is called before the first frame update
     private void Awake()
     {
-
-        menuCamera.gameObject.SetActive(true);
-        _menuCanvas.gameObject.SetActive(true);
-       // Screen.SetResolution(2080, 960, true);
-       // Screen.SetResolution(2080, 960, true);
-        gamePostFX.enabled = false;
-        audioManager.playAudio(audioManager.mainMenu);
-        playerCamera.GetComponent<AudioListener>().enabled = false;
-        player.GetComponent<FirstPersonMovement>().enabled = false;
-        playerCamera.gameObject.SetActive(false);
-       // player.gameObject.SetActive(false);
+        InitializePlayer();
+        isGamePaused = false;
         Instance = this;
-        _playerMovementControlls.SetActive(false);
-       _playerUI.SetActive(false);
+        Screen.SetResolution(1655, 764, true);
+      //  menuCamera.gameObject.SetActive(true);
+      //  _menuCanvas.gameObject.SetActive(true);
+       // Screen.SetResolution(2080, 960, true);
+       // Screen.SetResolution(2080, 960, true);
+        gamePostFX.enabled = true;
+        audioManager.playAudio(audioManager.natureClip);
+        playerCamera.GetComponent<AudioListener>().enabled = true;
+        player.GetComponent<FirstPersonMovement>().enabled = true;
+        playerCamera.gameObject.SetActive(true);
+       // player.gameObject.SetActive(false);
+       
+        Database = Resources.Load<Database>("Database");
+        _playerMovementControlls.SetActive(true);
+       _playerUI.SetActive(true);
 
     }
-   
 
+    private void OnEnable()
+    {
+        SaveLoad.OnLoadGame += LoadGame;
+    }
+
+    private void OnDisable()
+    {
+        SaveLoad.OnLoadGame -= LoadGame;
+    }
     // Update is called once per frame
-    
+    private void Update()
+    {
+       
+            if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+            {
+                Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+            //if (Physics.Raycast(raycast, out raycastHit))
+                if (Physics.Raycast(raycast, out raycastHit, 3f, LayerMask.GetMask("Item")))
+                {
+                if (raycastHit.collider.CompareTag("Item"))
+                {
+
+                    raycastHit.collider.gameObject.GetComponent<ItemPickUp>().PickUpItem(player.playerInventory);
+                }
+                   
+                    
+                     
+                }
+            }
+        
+    }
 
     /*public void SaveGame()
     {
@@ -102,6 +135,18 @@ public class GameManager : MonoBehaviour
         player.IsActive = true;
     }
 
+    public void DisablePlayer()
+    {
+
+        //player.gameObject.SetActive(true);//tworze gracza
+        playerCamera.gameObject.SetActive(false);//ustawiam jego kamere na aktywna
+        player.GetComponent<FirstPersonMovement>().enabled = false;
+        _playerUI.SetActive(false);
+        _playerMovementControlls.SetActive(false);
+        playerCamera.GetComponent<AudioListener>().enabled = false;
+        player.IsActive = false;
+    }
+
     public void HideUI(GameObject _uiElement)
     {
         _uiElement.SetActive(false);
@@ -122,5 +167,37 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Underground", LoadSceneMode.Single);
     }
-  
+
+    
+ public void PauseOrResumeGame()
+ {
+        if (!isGamePaused)
+        {
+            Time.timeScale = 0;
+            isGamePaused = true;
+            UIManager.instance.ShowHideWindow(UIManager.instance.pauseScreen);
+        }
+
+        else
+        {
+            Time.timeScale = 1;
+            isGamePaused = false;
+            UIManager.instance.ShowHideWindow(UIManager.instance.pauseScreen);
+        }
+
+            
+ }
+
+ 
+
+    public void LoadGame(SaveData data)
+    {
+        StartGame();
+       
+    }
+
+    public void GoToMainMenu()
+    {
+        MainManager.Instance.QuitToMenu();
+    }
 }

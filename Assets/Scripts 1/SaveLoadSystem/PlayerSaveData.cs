@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerSaveData : MonoBehaviour
+public class PlayerSaveDatax : MonoBehaviour
 {
     // Start is called before the first frame update
     public int currentHealth;

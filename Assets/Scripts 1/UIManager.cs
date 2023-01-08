@@ -18,18 +18,19 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI healthPercentage;
     public TextMeshProUGUI weaponAmmunitionUI;
     public GameObject deathScreen;
+    public GameObject pauseScreen;
     void Start()
     {
-        
         instance = this;
-        staminaBar.fillAmount = Player.player.playerStamina;
-        thirstBar.fillAmount = Player.player.playerThirst;
-        hungerBar.fillAmount = Player.player.playerHunger;
-        healthPercentage.text = Player.player.playerHealth.ToString();
+        Invoke("SetUI", 2f);
 
 
-}
-
+       
+    }
+    private void Awake()
+    {
+      
+    }
 
     private void OnEnable()
     {
@@ -91,5 +92,14 @@ public class UIManager : MonoBehaviour
         if(deathScreen!=null)
         deathScreen.SetActive(true);
     }
+ 
     
+    public void SetUI()
+    {
+        
+        staminaBar.fillAmount = Player.player.playerStamina;
+        thirstBar.fillAmount = Player.player.playerThirst;
+        hungerBar.fillAmount = Player.player.playerHunger;
+        healthPercentage.text = Player.player.playerHealth.ToString();
+    }
 }

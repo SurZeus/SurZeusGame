@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour,IDamagable
     public bool heardNoise;
     public bool isEngagingPlayer;
     public bool isChasingPlayer;
-    public float walkSpeed;
+   
     public NavMeshAgent enemyAgent;
     public GameObject detectionArea;
     [SerializeField]
@@ -34,8 +34,8 @@ public class Enemy : MonoBehaviour,IDamagable
         animator = gameObject.GetComponentInChildren<Animator>();
         health = 100;
         heardNoise = false;
-        enemyWalkTime = Random.Range(50, 100);
-        range = Random.Range(25, 100);
+        enemyWalkTime = Random.Range(10, 100);
+        range = Random.Range(10, 50);
        
     }
     void Start()
@@ -160,6 +160,7 @@ public class Enemy : MonoBehaviour,IDamagable
 
     public void AttackPlayer()
     {
+        Debug.Log("xD");
         if (getDistanceToPlayer() <= 2f)
         Player.player.DecreaseHealth(Damage);
         else Debug.Log("Player TOO FAR");

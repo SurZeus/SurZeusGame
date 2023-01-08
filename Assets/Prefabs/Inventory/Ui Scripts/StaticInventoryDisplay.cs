@@ -19,10 +19,11 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     private void OnEnable()
     {
+      //  DontDestroyOnLoad(this.gameObject);
         PlayerInventoryHolder.OnPlayerInventoryChange += RefreshStaticDisplay;
     }
 
-    private void OnDisablee()
+    private void OnDisable()
     {
         PlayerInventoryHolder.OnPlayerInventoryChange -= RefreshStaticDisplay;
     }

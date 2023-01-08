@@ -15,6 +15,7 @@ public class AnimationEventsZombie : MonoBehaviour
    
     public void AttackPlayerAnimationEvent()
     {
+        Debug.Log("attacking");
         enemy.AttackPlayer();
     }
 }

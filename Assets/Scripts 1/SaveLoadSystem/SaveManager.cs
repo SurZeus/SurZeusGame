@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-  
+    public static SaveManager Instance;
     public static SaveData data;
 
     private void Awake()
     {
-        data = new SaveData();
+        // start of new code
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        // end of new code
+
+        Instance = this;
         SaveLoad.OnLoadGame += LoadData;
+       // DontDestroyOnLoad(gameObject);
+        data = new SaveData();
     }
+
+    
 
     private void LoadData(SaveData _data)
     {
@@ -21,7 +33,7 @@ public class SaveManager : MonoBehaviour
     public static void SaveData()
     {
         var saveData = data;
-        Debug.Log("sd " + saveData.chestDictionary.Count);
+      //  Debug.Log("sd " + saveData.chestDictionary.Count);
         SaveLoad.SaveGame(saveData);
     }
 
@@ -34,5 +46,10 @@ public class SaveManager : MonoBehaviour
     public static void TryLoadData()
     {
         SaveLoad.LoadGame();
+    }
+
+    public void GenerateNewSaveData()
+    {
+
     }
 }

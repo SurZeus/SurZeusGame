@@ -151,10 +151,11 @@ public class InventorySystem
 [System.Serializable]
 public class InventorySlot : ISerializationCallbackReceiver
 {
+    public Database DB;
     [SerializeField] private int _itemID = -1;
     [NonSerialized] public InventoryItemData itemData; //reference to the data
     public bool isEquipped = false;
-    public int stackSize; //current stack size - how many of the data do we have
+    [SerializeField]public int stackSize; //current stack size - how many of the data do we have
     public int loadedAmmo = 0;
     public InventorySlot(InventoryItemData item, int count)  //constructor to make a occupied inventory slot
     {
@@ -238,13 +239,15 @@ public class InventorySlot : ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-       
+
+
     }
 
     public void OnAfterDeserialize()
     {
         if (_itemID == -1) return;
-        // var db = Resources.Load<Database>("Database");
-        // itemData = db.GetItem(_itemID);
+        if(GameManager.Instance != null)
+        itemData = GameManager.Instance.Database.GetItem(_itemID);
     }
+      
 }

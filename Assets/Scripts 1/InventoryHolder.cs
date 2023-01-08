@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public abstract class InventoryHolder : MonoBehaviour
 {
     [SerializeField] private int inventorySize;
@@ -13,7 +14,7 @@ public abstract class InventoryHolder : MonoBehaviour
     public InventorySystem PrimaryInventorySystem => primaryInventorySystem;
     public static UnityAction<InventorySystem,int> OnDynamicInventoryDisplayRequested; //inv system to display amount to offset display by
 
-  /*  private void Start()
+   /* private void Start()
     {
         SaveManager.data.playerInventory = new InventorySaveData();
     }*/

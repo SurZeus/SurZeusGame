@@ -20,7 +20,8 @@ public static class SaveLoad
 
         OnSaveGame?.Invoke();
         var dir = Application.persistentDataPath + SaveDirectory;
-        Debug.Log(data.chestDictionary.Count);
+       // Debug.Log(data.chestDictionary.Count + "xD");
+        
         GUIUtility.systemCopyBuffer = dir;
         if (!Directory.Exists(dir))
         {
@@ -40,10 +41,13 @@ public static class SaveLoad
 
         if (File.Exists(fullPath))
         {
+            Debug.Log("exists");
             string json = File.ReadAllText(fullPath);
             tempData = JsonUtility.FromJson<SaveData>(json);
-            OnLoadGame?.Invoke(tempData);
            
+            OnLoadGame?.Invoke(tempData);
+            Debug.Log(tempData.playerInventory.invSystem.inventorySlots[0].itemData.itemName);
+
         }
 
         else

@@ -6,7 +6,7 @@ public class test : MonoBehaviour
 {
     public GameObject[] objects;
 
-    private bool enabled;
+   // private bool enabled;
 
     private void Update()
     {

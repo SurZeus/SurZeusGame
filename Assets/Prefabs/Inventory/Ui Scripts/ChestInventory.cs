@@ -10,8 +10,8 @@ public class ChestInventory : InventoryHolder, IInteractable
     private void Start()
     {
         
-        var chestSavedData = new InventorySaveData(primaryInventorySystem, transform.position, transform.rotation);
-        SaveManager.data.chestDictionary.Add(GetComponent<UniqueID>().ID, chestSavedData);
+      // var chestSavedData = new InventorySaveData(primaryInventorySystem, transform.position, transform.rotation);
+       // SaveManager.data.chestDictionary.Add(GetComponent<UniqueID>().ID, chestSavedData);
     }
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
     protected override void Awake()
@@ -22,12 +22,12 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     protected override void LoadInventory(SaveData data)
     {
-        if(data.chestDictionary.TryGetValue(GetComponent<UniqueID>().ID,out InventorySaveData chestData))
+        /*if (data.chestDictionary.TryGetValue(GetComponent<UniqueID>().ID, out InventorySaveData chestData))
         {
             this.primaryInventorySystem = chestData.invSystem;
             this.transform.position = chestData.position;
             this.transform.rotation = chestData.rotation;
-        }
+        }*/
     }
 
 

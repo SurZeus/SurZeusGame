@@ -8,10 +8,10 @@ public class PlayerInventoryHolder : InventoryHolder
 
   
     public static UnityAction OnPlayerInventoryChange;
-    public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
+   public static UnityAction<InventorySystem, int> OnPlayerInventoryDisplayRequested;
     // public static UNityAction
     // Update is called once per frame
-   
+
 
     private void Start()
     {
@@ -21,8 +21,10 @@ public class PlayerInventoryHolder : InventoryHolder
     {
         if (data.playerInventory.invSystem != null)
         {
+
             this.primaryInventorySystem = data.playerInventory.invSystem;
             OnPlayerInventoryChange?.Invoke();
+          //  Debug.Log(data.playerInventory.invSystem.inventorySlots[0].itemData.id);
         }
     }
     public bool AddToInventory(InventoryItemData data, int amount)
@@ -32,16 +34,16 @@ public class PlayerInventoryHolder : InventoryHolder
             return true;
         }
 
-       
-        
+
+
 
         return false;
     }
 
-    
+
 
     public void OpenInventory()
     {
-         OnPlayerInventoryDisplayRequested?.Invoke(primaryInventorySystem, offset);
+        OnPlayerInventoryDisplayRequested?.Invoke(primaryInventorySystem, offset);
     }
 }
