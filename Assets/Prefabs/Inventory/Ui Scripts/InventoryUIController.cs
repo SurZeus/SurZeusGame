@@ -14,18 +14,19 @@ public class InventoryUIController : MonoBehaviour
         playerBackpackPanel.gameObject.SetActive(false);
     }
     public DynamicInventoryDisplay playerBackpackPanel;
+    
    [FormerlySerializedAs("chestPanel")] public DynamicInventoryDisplay inventoryPanel;
 
     // Update is called once per frame
     private void OnEnable()
     {
-        InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
+        InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayChestInventory;
         PlayerInventoryHolder.OnPlayerInventoryDisplayRequested += DisplayPlayerInventory;
        
     }
     private void OnDisable()
     {
-        InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayInventory;
+        InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayChestInventory;
         PlayerInventoryHolder.OnPlayerInventoryDisplayRequested -= DisplayPlayerInventory;
     }
     void Update()
@@ -44,12 +45,12 @@ public class InventoryUIController : MonoBehaviour
         
     }
 
-    void DisplayInventory(InventorySystem invToDisplay, int offset)
+   public void DisplayInventory(InventorySystem invToDisplay, int offset)
     {
         inventoryPanel.gameObject.SetActive(true);
         inventoryPanel.RefreshDynamicInventory(invToDisplay, offset);
     }
-    void DisplayPlayerInventory(InventorySystem invToDisplay, int offset)
+   public void DisplayPlayerInventory(InventorySystem invToDisplay, int offset)
     {
         if (playerBackpackPanel.gameObject.activeInHierarchy)
         {
@@ -62,7 +63,21 @@ public class InventoryUIController : MonoBehaviour
             playerBackpackPanel.RefreshDynamicInventory(invToDisplay, offset);
         }
 
+    }public void DisplayChestInventory(InventorySystem invToDisplay, int offset)
+    {
+        if (inventoryPanel.gameObject.activeInHierarchy)
+        {
+            inventoryPanel.gameObject.SetActive(false);
+        }
+        else
+        {
+
+            inventoryPanel.gameObject.SetActive(true);
+            inventoryPanel.RefreshDynamicInventory(invToDisplay, offset);
+        }
+
     }
+    
 
     
 

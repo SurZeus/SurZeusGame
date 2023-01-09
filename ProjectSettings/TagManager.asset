@@ -16,6 +16,7 @@ TagManager:
   - FxTemporaire
   - ItemSpawnArea
   - Item
+  - Chest
   layers:
   - Default
   - TransparentFX

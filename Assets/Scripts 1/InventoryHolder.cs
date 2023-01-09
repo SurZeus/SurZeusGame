@@ -28,6 +28,10 @@ public abstract class InventoryHolder : MonoBehaviour
         primaryInventorySystem = new InventorySystem(inventorySize);
     }
 
+    private void OnDestroy()
+    {
+        SaveLoad.OnLoadGame -= LoadInventory;
+    }
     protected abstract void LoadInventory(SaveData saveData);
     
    

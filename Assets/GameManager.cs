@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
        
-            if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+            /*if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit raycastHit;
@@ -88,11 +88,9 @@ public class GameManager : MonoBehaviour
 
                     raycastHit.collider.gameObject.GetComponent<ItemPickUp>().PickUpItem(player.playerInventory);
                 }
-                   
-                    
-                     
                 }
-            }
+                
+            }*/
         
     }
 
