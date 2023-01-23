@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4689435814697087025
+--- !u!1 &2090422920226019495
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,98 +8,117 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5359259004502796939}
-  - component: {fileID: 3964404705556890374}
+  - component: {fileID: 7284049080466286832}
+  - component: {fileID: 5177569093082021588}
+  - component: {fileID: 6148438810579363191}
+  - component: {fileID: 3412988055010988780}
+  - component: {fileID: 7614247589256534216}
   m_Layer: 0
-  m_Name: village_optimised
+  m_Name: House_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5359259004502796939
+--- !u!4 &7284049080466286832
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4689435814697087025}
-  m_LocalRotation: {x: 0.000000015401174, y: -0.7071207, z: 0.000000015401783, w: 0.7070929}
-  m_LocalPosition: {x: -178.01, y: 0.046609815, z: 328.77}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 948149583945669705}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &3964404705556890374
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4689435814697087025}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.0010441941
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 5129376060393337946}
-  m_Enabled: 1
---- !u!1 &4982697281373331351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 948149583945669705}
-  - component: {fileID: 3859409429166895040}
-  - component: {fileID: 5129376060393337946}
-  m_Layer: 0
-  m_Name: House
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &948149583945669705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4982697281373331351}
-  m_LocalRotation: {x: 0.000000021855696, y: -2.3283064e-12, z: 7.099618e-20, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 2090422920226019495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6313890752659911884}
   m_Father: {fileID: 5359259004502796939}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3859409429166895040
+--- !u!114 &5177569093082021588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090422920226019495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aff4833db8e2b14aa0f0b6071c41e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdFile: d:/SurZeusGame/SurZeusGame/Assets/LOD/house/LOD1/House_LOD1.usd
+  m_projectAssetPath: Assets/LOD/house/LOD1/
+  m_usdRootPath: /House
+  m_usdTimeOffset: 0
+  m_payloadPolicy: 1
+  m_importHierarchy: 1
+  m_scale: 1
+  m_changeHandedness: 1
+  m_interpolation: 1
+  m_useOriginalShaderIfAvailable: 1
+  m_displayColorMaterial: {fileID: 0}
+  m_specularWorkflowMaterial: {fileID: 0}
+  m_metallicWorkflowMaterial: {fileID: 0}
+  m_enableGpuInstancing: 0
+  m_points: 0
+  m_topology: 0
+  m_boundingBox: 1
+  m_color: 0
+  m_normals: 0
+  m_tangents: 0
+  m_st: 0
+  m_texcoord1: 0
+  m_texcoord2: 0
+  m_texcoord3: 0
+  m_generateLightmapUVs: 0
+  m_unwrapAngleError: 0.08
+  m_unwrapAreaError: 0.15
+  m_unwrapHardAngle: 88
+  m_unwrapPackMargin: 4
+  m_materialImportMode: 0
+  m_importCameras: 1
+  m_importMeshes: 1
+  m_importSkinning: 1
+  m_importTransforms: 1
+  m_importSceneInstances: 1
+  m_importPointInstances: 1
+  m_importMonoBehaviors: 0
+  m_debugShowSkeletonBindPose: 0
+  m_debugShowSkeletonRestPose: 0
+  m_debugPrintVariabilityCache: 0
+  m_usdVariabilityCache: 1
+  LastHandedness: 1
+  LastScale: 1
+--- !u!114 &6148438810579363191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090422920226019495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House
+--- !u!33 &3412988055010988780
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4982697281373331351}
-  m_Mesh: {fileID: 4887216478360415443, guid: d0292d9cd763e36488ace2c776eb9c21, type: 3}
---- !u!23 &5129376060393337946
+  m_GameObject: {fileID: 2090422920226019495}
+  m_Mesh: {fileID: 4300000, guid: df1704f7e6688f5468eed8656f9d9056, type: 2}
+--- !u!23 &7614247589256534216
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4982697281373331351}
+  m_GameObject: {fileID: 2090422920226019495}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -113,8 +132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6467876637011919239, guid: d0292d9cd763e36488ace2c776eb9c21, type: 3}
-  - {fileID: 663935632544152483, guid: d0292d9cd763e36488ace2c776eb9c21, type: 3}
+  - {fileID: 2100000, guid: 7c8450046c32f87468354b357ea7d269, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,3 +154,396 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3600571814814670566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9170345940292373048}
+  - component: {fileID: 4687445889673947418}
+  m_Layer: 0
+  m_Name: Materials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9170345940292373048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600571814814670566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 336675705026452723}
+  m_Father: {fileID: 3616715181696139474}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4687445889673947418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600571814814670566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House_LOD1/Materials
+--- !u!1 &4689435814697087025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5359259004502796939}
+  - component: {fileID: 3964404705556890374}
+  m_Layer: 0
+  m_Name: village_optimised
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &5359259004502796939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689435814697087025}
+  m_LocalRotation: {x: 0, y: -0.70711905, z: 0, w: 0.7070945}
+  m_LocalPosition: {x: -178.01, y: 0.046609815, z: 328.77}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7284049080466286832}
+  - {fileID: 3616715181696139474}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: -90.002, z: 0}
+--- !u!205 &3964404705556890374
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689435814697087025}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.018799305, y: 3.8542073, z: -0.004192829}
+  m_Size: 11.306262
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.08053754
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7614247589256534216}
+  - screenRelativeHeight: 0.023391306
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6332139395791024179}
+  m_Enabled: 1
+--- !u!1 &6319469642172239751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3616715181696139474}
+  - component: {fileID: 7430169344332078709}
+  - component: {fileID: 6798595940990183861}
+  - component: {fileID: 8010925327479682818}
+  - component: {fileID: 6332139395791024179}
+  m_Layer: 0
+  m_Name: House_LOD1_LOD1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3616715181696139474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319469642172239751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9170345940292373048}
+  m_Father: {fileID: 5359259004502796939}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7430169344332078709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319469642172239751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aff4833db8e2b14aa0f0b6071c41e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdFile: d:/SurZeusGame/SurZeusGame/Assets/LOD/House_LOD1 1/LOD1/House_LOD1_LOD1.usd
+  m_projectAssetPath: Assets/LOD/House_LOD1 1/LOD1/
+  m_usdRootPath: /House_LOD1
+  m_usdTimeOffset: 0
+  m_payloadPolicy: 1
+  m_importHierarchy: 1
+  m_scale: 1
+  m_changeHandedness: 1
+  m_interpolation: 1
+  m_useOriginalShaderIfAvailable: 1
+  m_displayColorMaterial: {fileID: 0}
+  m_specularWorkflowMaterial: {fileID: 0}
+  m_metallicWorkflowMaterial: {fileID: 0}
+  m_enableGpuInstancing: 0
+  m_points: 0
+  m_topology: 0
+  m_boundingBox: 1
+  m_color: 0
+  m_normals: 0
+  m_tangents: 0
+  m_st: 0
+  m_texcoord1: 0
+  m_texcoord2: 0
+  m_texcoord3: 0
+  m_generateLightmapUVs: 0
+  m_unwrapAngleError: 0.08
+  m_unwrapAreaError: 0.15
+  m_unwrapHardAngle: 88
+  m_unwrapPackMargin: 4
+  m_materialImportMode: 0
+  m_importCameras: 1
+  m_importMeshes: 1
+  m_importSkinning: 1
+  m_importTransforms: 1
+  m_importSceneInstances: 1
+  m_importPointInstances: 1
+  m_importMonoBehaviors: 0
+  m_debugShowSkeletonBindPose: 0
+  m_debugShowSkeletonRestPose: 0
+  m_debugPrintVariabilityCache: 0
+  m_usdVariabilityCache: 1
+  LastHandedness: 1
+  LastScale: 1
+--- !u!114 &6798595940990183861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319469642172239751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House_LOD1
+--- !u!33 &8010925327479682818
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319469642172239751}
+  m_Mesh: {fileID: 4300000, guid: 1027e9ca94ed93b4ca71a0317c72456f, type: 2}
+--- !u!23 &6332139395791024179
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319469642172239751}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7c8450046c32f87468354b357ea7d269, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6948495412867808912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6313890752659911884}
+  - component: {fileID: 8541784545864072630}
+  m_Layer: 0
+  m_Name: Materials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6313890752659911884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948495412867808912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8921543390767737136}
+  m_Father: {fileID: 7284049080466286832}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8541784545864072630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948495412867808912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House/Materials
+--- !u!1 &7495152064028861519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8921543390767737136}
+  - component: {fileID: 5130863728119063125}
+  m_Layer: 0
+  m_Name: SimplygonCastMaterial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8921543390767737136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495152064028861519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6313890752659911884}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5130863728119063125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495152064028861519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House/Materials/SimplygonCastMaterial
+--- !u!1 &8550388904701760207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336675705026452723}
+  - component: {fileID: 2641159547983036460}
+  m_Layer: 0
+  m_Name: SimplygonCastMaterial__822318
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &336675705026452723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550388904701760207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9170345940292373048}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2641159547983036460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550388904701760207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0a2371b63dc44199935c88ef12809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_usdPrimPath: /House_LOD1/Materials/SimplygonCastMaterial__822318
