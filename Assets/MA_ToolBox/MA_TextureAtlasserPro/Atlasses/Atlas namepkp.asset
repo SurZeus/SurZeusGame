@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: Atlas namepkp
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: 4828487405475355522}
+  - {fileID: 7940625775055365423}
+  - {fileID: 5359606070475676691}
+  selectedTextureQuad: {fileID: 4828487405475355522}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: 4a5a49c21372b364f8e9c08de69cf20d, type: 2}
+  textureAtlasSize: {x: 4096, y: 4096}
+  textureGroupRegistration:
+  - name: Albedo
+--- !u!114 &4828487405475355522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: RED
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2052.9968
+    height: 2043.7522
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1008.6667
+    y: 2036.8334
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2048.6667
+    y: 996.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1024.6666
+    y: 1012.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 79612479d2ac77442a7e1be6c9bed831, type: 3}
+  modelGroups:
+  - name: MCowjF
+    meshes:
+    - {fileID: 4300000, guid: 256f5acb855dc8548863d95e83f50c94, type: 2}
+--- !u!114 &5359606070475676691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: new blue
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 2032.2888
+    y: 2045.7861
+    width: 2052.9968
+    height: 2050.2139
+  guiRect:
+    serializedVersion: 2
+    x: 2048
+    y: 2048
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 6975.3906
+    y: 8047.735
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 8015.3906
+    y: 7007.735
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 6991.3906
+    y: 7023.735
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 7fb126ea4906d7747a53d6fa537aa02c, type: 3}
+  modelGroups:
+  - name: MCowjF
+    meshes:
+    - {fileID: 4300000, guid: a84f7db792c8d10489fa02ac83f3e05e, type: 2}
+--- !u!114 &7940625775055365423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: blue
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 2043.0032
+    y: 0
+    width: 2052.9968
+    height: 2043.7522
+  guiRect:
+    serializedVersion: 2
+    x: 2048
+    y: 0
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 2988.9888
+    y: 1769.4395
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 4028.9888
+    y: 729.4394
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 3004.9888
+    y: 745.4394
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 5a7daf4993cdef740b86f054e1637d88, type: 3}
+  modelGroups:
+  - name: MCowjF
+    meshes:
+    - {fileID: 4300000, guid: 5c7e2307854d732488a12b913d8b05e9, type: 2}
