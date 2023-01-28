@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5763107968004259603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: gray
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 2061.3599
+    width: 2042.6123
+    height: 2034.6401
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 2048
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 2843.3755
+    y: 4350.556
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 3883.3755
+    y: 3310.5562
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 2859.3755
+    y: 3326.5562
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: df19f10ab7e4fea49867fa33e1329cdc, type: 3}
+  modelGroups:
+  - name: voPwyT
+    meshes:
+    - {fileID: 4300000, guid: a14928b6346627f409f92e3e88a57c30, type: 2}
+--- !u!114 &-2842711516344421208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: red
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2042.6123
+    height: 2034.6401
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 3459.4177
+    y: 2306.706
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 4499.418
+    y: 1266.7059
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 3475.4177
+    y: 1282.7059
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 3b374a3eba663f743b755644a51a6d93, type: 3}
+  modelGroups:
+  - name: voPwyT
+    meshes:
+    - {fileID: 4300000, guid: c9017deab3ef2ed459ca98396b32c33d, type: 2}
+--- !u!114 &-2099339996166633260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: blue
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 2053.3877
+    y: 2056.0967
+    width: 2042.6123
+    height: 2034.6401
+  guiRect:
+    serializedVersion: 2
+    x: 2048
+    y: 2048
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 4383.6147
+    y: 3519.8447
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 5423.6147
+    y: 2479.8447
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 4399.6147
+    y: 2495.8447
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 20f2a43da0e92cc4e9c1c26f307e9840, type: 3}
+  modelGroups:
+  - name: voPwyT
+    meshes:
+    - {fileID: 4300000, guid: 9de6fc0f2a9ac644faf6fff76d23b20e, type: 2}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: PickUpsFinal
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: -2842711516344421208}
+  - {fileID: 8083701470213684331}
+  - {fileID: -2099339996166633260}
+  - {fileID: -5763107968004259603}
+  selectedTextureQuad: {fileID: -5763107968004259603}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: 4a5a49c21372b364f8e9c08de69cf20d, type: 2}
+  textureAtlasSize: {x: 4096, y: 4096}
+  textureGroupRegistration:
+  - name: Albedo
+--- !u!114 &8083701470213684331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: white
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 2053.3877
+    y: 0.56817627
+    width: 2042.6123
+    height: 2034.6401
+  guiRect:
+    serializedVersion: 2
+    x: 2048
+    y: 0
+    width: 2048
+    height: 2048
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 6667.8755
+    y: 3285.7349
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 7707.8755
+    y: 2245.7349
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 6683.8755
+    y: 2261.7349
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: db9b7e8a6443b004b9ef4786a10635b3, type: 3}
+  modelGroups:
+  - name: voPwyT
+    meshes:
+    - {fileID: 4300000, guid: d89cd2119abe45146831ca059e979ec8, type: 2}
