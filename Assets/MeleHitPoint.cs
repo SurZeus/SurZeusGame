@@ -6,11 +6,11 @@ public class MeleHitPoint : MonoBehaviour
 {
     // Start is called before the first frame update
     public BoxCollider hitPoint;
-    public float damage;
+   // public float damage;
     void Start()
     {
         hitPoint = GetComponent<BoxCollider>();
-        damage = GetComponentInParent<MeleAttack>().damage;
+       // damage = GetComponentInParent<MeleAttack>().damage;
 
     }
 

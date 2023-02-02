@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum AmunitionType
 {
-    STANAG, AK, SHEELS
+    STANAG, AK, SHEELS, REVOLVER
 }
 
 [CreateAssetMenu(menuName = "Amunition")]

@@ -19,10 +19,11 @@ MonoBehaviour:
   itemName: M4A1
   itemIcon: {fileID: 21300000, guid: 37bbbf2bdbd4729418c5bab1f378066d, type: 3}
   prefab: {fileID: 6048217380699471125, guid: cccb8621594beb54a9164f5ae069d56e, type: 3}
-  damage: 30
+  headDamage: 100
+  bodyDamage: 25
   range: 300
   timeBetweenShooting: 0.1
-  spread: 0.1
+  spread: 0
   reloadTime: 2
   timeBetweenShots: 0.1
   magazineSize: 35

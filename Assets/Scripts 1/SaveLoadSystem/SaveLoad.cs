@@ -44,7 +44,7 @@ public static class SaveLoad
             Debug.Log("exists");
             string json = File.ReadAllText(fullPath);
             tempData = JsonUtility.FromJson<SaveData>(json);
-           
+            Debug.Log(tempData.playerSaveData.position.x);
             OnLoadGame?.Invoke(tempData);
            // Debug.Log(tempData.playerInventory.invSystem.inventorySlots[0].itemData.itemName);
 

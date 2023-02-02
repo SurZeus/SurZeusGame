@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e7611d31ee3274199729f02d487134, type: 3}
+  m_Name: Cereal
+  m_EditorClassIdentifier: 
+  rarityLevel: 50
+  id: 22
+  type: 1
+  MaxStackSize: 5
+  itemName: Cereal
+  itemIcon: {fileID: 21300000, guid: aa9fefc9aabe7d647a6dfb689d0b6883, type: 3}
+  prefab: {fileID: 4220191584294878152, guid: cbde5c6f101ef7246a03c326585474d6, type: 3}
+  drinkValue: 5
+  foodValue: 40
+  energyValue: 15
+  healthValue: 0

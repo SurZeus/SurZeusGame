@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
     {
       
         gamePostFX.enabled = true;
-        menuPostFX.enabled = false;
+       // menuPostFX.enabled = false;
         InitializePlayer();
         //tworze gracza
         DeactivateMainMenu();

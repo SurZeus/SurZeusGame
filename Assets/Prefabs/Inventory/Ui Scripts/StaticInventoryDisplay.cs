@@ -10,7 +10,7 @@ public class StaticInventoryDisplay : InventoryDisplay
     {
         slotDictionary = new Dictionary<InventorySlot_UI, InventorySlot>();
 
-        for(int i = 0; i < inventoryHolder.Offset; i++)
+        for (int i = 0; i < inventoryHolder.Offset; i++)
         {
             slotDictionary.Add(slots[i], inventorySystem.inventorySlots[i]);
             slots[i].Init(inventorySystem.inventorySlots[i]);
@@ -19,7 +19,7 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     private void OnEnable()
     {
-      //  DontDestroyOnLoad(this.gameObject);
+        //  DontDestroyOnLoad(this.gameObject);
         PlayerInventoryHolder.OnPlayerInventoryChange += RefreshStaticDisplay;
     }
 

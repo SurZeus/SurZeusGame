@@ -19,7 +19,8 @@ MonoBehaviour:
   itemName: B92
   itemIcon: {fileID: 21300000, guid: 80d22f21dfa6a894cb8a3e1504ce5796, type: 3}
   prefab: {fileID: 1364704855717136, guid: cd89a223e5b83d94fa54a76c14c9c24d, type: 3}
-  damage: 15
+  headDamage: 100
+  bodyDamage: 25
   range: 200
   timeBetweenShooting: 0.15
   spread: 0

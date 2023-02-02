@@ -19,10 +19,11 @@ MonoBehaviour:
   itemName: PKM
   itemIcon: {fileID: 21300000, guid: d26d28c9d8a6a204f92e2a5e45e1c1cb, type: 3}
   prefab: {fileID: 1853270556229732, guid: 4cc34ef970db3094b86f73e90adffedb, type: 3}
-  damage: 50
+  headDamage: 100
+  bodyDamage: 40
   range: 200
   timeBetweenShooting: 0.1
-  spread: 0.1
+  spread: 0
   reloadTime: 2
   timeBetweenShots: 0.1
   magazineSize: 100

@@ -88,7 +88,7 @@ public class FirstPersonMovement : MonoBehaviour
         if (isRuning && Player.player.playerStamina != 0)
         {
            // Debug.Log("1");
-            Player.player.playerStamina -= Time.deltaTime * 5;
+            Player.player.playerStamina -= Time.deltaTime * 2;
         }
         else if (isRuning == false && Player.player.playerStamina <= 100)
         {
@@ -123,7 +123,7 @@ public class FirstPersonMovement : MonoBehaviour
     {
        // Debug.Log("corutya");
         canRun = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
         canRun = true;
     }
    

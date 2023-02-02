@@ -12,7 +12,8 @@ public class MeleAttack : MonoBehaviour
 
 
     public bool isAttacking;
-    public int damage;
+    public int damageHead;
+    public int damageBody;
     public LayerMask layer;
     public GameObject Axe;
     public bool CanAttack = true;
@@ -21,6 +22,7 @@ public class MeleAttack : MonoBehaviour
     public AudioClip HitSound;
     public AudioSource audioSource;
     public Animator anim;
+    
     public WeaponHolderItem weaponHolderItem;
     public BoxCollider hitPoint;
     public bool canDoDamage;
@@ -33,7 +35,8 @@ public class MeleAttack : MonoBehaviour
         canDoDamage = false;
         hitPoint = GetComponentInChildren<MeleHitPoint>().gameObject.GetComponent<BoxCollider>();
         weaponHolderItem = GetComponent<WeaponHolderItem>();
-        damage = weaponHolderItem.weapon.damage;
+        damageHead = weaponHolderItem.weapon.headDamage;
+        damageBody = weaponHolderItem.weapon.bodyDamage;
         anim = gameObject.GetComponentInParent<Animator>();
         audioSource = GetComponent<AudioSource>();
         isAttacking = false;
@@ -60,13 +63,7 @@ public class MeleAttack : MonoBehaviour
     public void AxeAttack()
     {
 
-        Vector3 rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
-        float rayLength = 2f; //zasieg broni
-        // actual Ray
-        Ray ray = Camera.main.ViewportPointToRay(rayOrigin);
-        // debug Ray
-        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.red);
-        RaycastHit hit;
+       
         
         CanAttack = false;
         isAttacking = true;
@@ -92,12 +89,12 @@ public class MeleAttack : MonoBehaviour
    
 
 
-    IEnumerator damageEnemyWithDelay(float delay,RaycastHit hit,bool oneShootKill)
+    /*IEnumerator damageEnemyWithDelay(float delay,RaycastHit hit,bool oneShootKill)
     {
         yield return new WaitForSeconds(delay);
         if (oneShootKill) hit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
         else hit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
-    }
+    }*/
 
     public void MeleDamage(Collider enemy)
     {
@@ -107,9 +104,15 @@ public class MeleAttack : MonoBehaviour
             StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0f));
             Debug.Log("damagfe");
             if (enemy.CompareTag("EnemyBody"))
-                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+            {
+                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damageBody);
+            }
+               
             else if (enemy.CompareTag("EnemyHead"))
-                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(100);
+            {
+                enemy.GetComponent<Collider>().gameObject.GetComponentInParent<Enemy>().getDamage(damageHead);
+            }
+               
         }
     }
 

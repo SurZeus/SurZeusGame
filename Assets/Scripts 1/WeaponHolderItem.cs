@@ -8,7 +8,8 @@ public class WeaponHolderItem : MonoBehaviour
 
     public WeaponInventoryData weapon;
 
- 
-    
-   
+  
+
+
+
 }

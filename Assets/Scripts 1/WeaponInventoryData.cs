@@ -6,18 +6,9 @@ public class WeaponInventoryData : InventoryItemData
 {
     // Start is called before the first frame update
 
-    public int damage;
+    public int headDamage;
+    public int bodyDamage;
     public int range;
-   // public int amunitionType;
-    void Start()
-    {
-        
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // public int amunitionType;
+   
 }

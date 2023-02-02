@@ -2,6 +2,9 @@ using UnityEngine;
 using TMPro;
 using TouchControlsKit;
 
+
+[RequireComponent(typeof(WeaponHolderItem))]
+[RequireComponent(typeof(AdvancedWeaponRecoil))]
 public class GunSystem : MonoBehaviour
 {
 
@@ -12,7 +15,8 @@ public class GunSystem : MonoBehaviour
     [HideInInspector]
     public AdvancedWeaponRecoil advancedWeapon;
     public RangeWeaponData weapon;
-    public int damage;
+    public int damageHead;
+    public int damageBody;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap;
     public bool allowButtonHold;
@@ -30,18 +34,22 @@ public class GunSystem : MonoBehaviour
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
-    //public CamShake camShake;
-    // public float camShakeMagnitude, camShakeDuration;
+    [HideInInspector]
     public TextMeshProUGUI text;
+
+    public AudioClip fireSound;
+    public AudioClip reloadSound;
 
     private void Awake()
     {
         advancedWeapon = this.gameObject.GetComponent<AdvancedWeaponRecoil>();
         advancedCam = GameObject.Find("WeaponRecoil").GetComponent<AdvancedCamRecoil>(); ;
         GameManager.Instance.OnWeaponDisabled += DisableText;
+        
         text = UIManager.instance.weaponAmmunitionUI;
-        // camShake = Camera.main.GetComponent<CamShake>();
-        damage = weapon.damage;
+        
+        damageHead = weapon.headDamage;
+        damageBody = weapon.bodyDamage;
         timeBetweenShooting = weapon.timeBetweenShooting;
         spread = weapon.spread;
         range = weapon.range;
@@ -50,7 +58,7 @@ public class GunSystem : MonoBehaviour
         bulletsLeft = 0;
         readyToShoot = true;
         bulletsPerTap = 1;
-
+        audioSource = GameManager.Instance.player.gunSounds;
         //timeBetweenShooting = 0.15f;
     }
     private void Update()
@@ -98,30 +106,28 @@ public class GunSystem : MonoBehaviour
             if (rayHit.collider.CompareTag("EnemyHead"))
             {
                 Debug.Log("headshot");
-                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(100);
-                //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
-                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
+                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damageHead);
+              
+                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.1f));
                 Instantiate(rayHit.collider.gameObject.GetComponentInParent<Enemy>().bloodParticle, rayHit.collider.gameObject.transform.position, Quaternion.identity);
             }
 
             else if (rayHit.collider.CompareTag("EnemyBody"))
             {
                 Debug.Log("bodyshot");
-                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damage);
+                rayHit.collider.gameObject.GetComponentInParent<Enemy>().getDamage(damageBody);
                 //StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.2f));
-                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.5f));
+                StartCoroutine(AudioManager.instance.playSoundWithDelay(HitSound, 0.1f));
                 Instantiate(rayHit.collider.gameObject.GetComponentInParent<Enemy>().bloodParticle, rayHit.collider.gameObject.transform.position, Quaternion.identity);
             }
-            // rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
+          
         }
 
-        //ShakeCamera
-      // camShake.Shake(camShakeDuration, camShakeMagnitude);
-        audioSource.PlayOneShot(audioSource.clip);
 
-        //Graphics
-       // Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
-       // Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        audioSource.PlayOneShot(fireSound);
+
+     
+       Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
         bulletsLeft--;
         bulletsShot--;
@@ -137,7 +143,7 @@ public class GunSystem : MonoBehaviour
     }
     private void Reload()
     {
-        //Debug.Log("reload");
+        
         if (bulletsLeft != magazineSize && GameManager.Instance.playerInventory.PrimaryInventorySystem.HasThisItem(this.weapon.compatibleAmo, out InventorySlot foundSlot))
         {
             TempAmmoSlot = foundSlot;

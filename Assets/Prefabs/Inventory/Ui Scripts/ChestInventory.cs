@@ -6,15 +6,17 @@ using UnityEngine.Events;
 [RequireComponent(typeof(UniqueID))]
 public class ChestInventory : InventoryHolder, IInteractable
 {
-
+    [SerializeField]
+    public string id;
     public bool isOpen;
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        id = GetComponent<UniqueID>().ID;
+        // DontDestroyOnLoad(this);
         isOpen = false;
-      var chestSavedData = new InventorySaveData(primaryInventorySystem, transform.position, transform.rotation);
-       SaveManager.data.chestDictionary.Add(GetComponent<UniqueID>().ID, chestSavedData);
+        var chestSavedData = new InventorySaveData(primaryInventorySystem, transform.position, transform.rotation);
+        SaveManager.data.chestDictionary.Add(GetComponent<UniqueID>().ID, chestSavedData);
     }
 
     private void Update()
@@ -27,7 +29,11 @@ public class ChestInventory : InventoryHolder, IInteractable
     protected override void Awake()
     {
         base.Awake();
-        SaveLoad.OnLoadGame += LoadInventory;
+        // SaveLoad.OnLoadGame += LoadInventory;
+    }
+    private void OnEnable()
+    {
+        // SaveLoad.OnLoadGame += LoadInventory;
     }
 
     private void OnDestroy()
@@ -37,7 +43,7 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     public void CheckDistanceToPlayer()
     {
-        if(Vector3.Distance(gameObject.transform.position,GameManager.Instance.player.transform.position) > 3f)
+        if (Vector3.Distance(gameObject.transform.position, GameManager.Instance.player.transform.position) > 3f)
         {
             OnDynamicInventoryDisplayRequested?.Invoke(primaryInventorySystem, 0);
             isOpen = false;
@@ -45,7 +51,8 @@ public class ChestInventory : InventoryHolder, IInteractable
     }
     protected override void LoadInventory(SaveData data)
     {
-        //Debug.Log(data.chestDictionary.)
+
+        // Debug.Log(GetComponent<UniqueID>().ID);
         if (data.chestDictionary.Count != 0)
         {
             if (data.chestDictionary.TryGetValue(GetComponent<UniqueID>().ID, out InventorySaveData chestData))
@@ -65,13 +72,13 @@ public class ChestInventory : InventoryHolder, IInteractable
             isOpen = false;
         }
         else isOpen = true;
-        OnDynamicInventoryDisplayRequested?.Invoke(primaryInventorySystem,0);
+        OnDynamicInventoryDisplayRequested?.Invoke(primaryInventorySystem, 0);
         interactSuccesful = true;
     }
 
     public void EndInteraction()
     {
-        
+
     }
 
 

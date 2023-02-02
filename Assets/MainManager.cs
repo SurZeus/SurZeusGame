@@ -7,24 +7,25 @@ public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
     public bool isLoadRequired = false;
-    
+
 
     void OnEnable()
     {
-       
+
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
     void OnDisable()
     {
-        
+
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if(isLoadRequired == true)
+        if (isLoadRequired == true)
         {
+            isLoadRequired = false;
             SaveLoad.LoadGame();
         }
         Debug.Log("Level Loaded");
@@ -59,7 +60,7 @@ public class MainManager : MonoBehaviour
     {
         isLoadRequired = true;
         SceneManager.LoadScene("Underground", LoadSceneMode.Single);
-        
+
     }
 
     public void QuitToMenu()
@@ -68,5 +69,5 @@ public class MainManager : MonoBehaviour
         SceneManager.LoadScene("MainMenuNew", LoadSceneMode.Single);
         SceneManager.UnloadScene("Underground");
     }
- 
+
 }

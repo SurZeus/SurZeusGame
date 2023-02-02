@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private PlayerSaveData playerSaveData = new PlayerSaveData(false);
     public bool isDyingOfStarvation;
     public int playerState = 0; //0 prone  , 1 crouch, 2 stay, 3 walking, 4 runing;
-
+    public AudioSource gunSounds;
     private void OnEnable()
     {
         EventManager.changePlayerState += ChangePlayerState;
@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
 
     public void LoadPlayerData(SaveData data)
     {
+        Debug.Log("laduje gracza");
         transform.position = data.playerSaveData.position;
         transform.rotation = data.playerSaveData.rotation;
       //  SaveManager.data.playerSaveData = playerSaveData;

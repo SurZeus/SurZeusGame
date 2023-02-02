@@ -15,11 +15,11 @@ MonoBehaviour:
   rarityLevel: 40
   id: 6
   type: 1
-  MaxStackSize: 3
+  MaxStackSize: 1
   itemName: Water Bottle 300ml
   itemIcon: {fileID: 21300000, guid: 992263cc746409241a7acca498ca9d28, type: 3}
   prefab: {fileID: 1216505430168376, guid: 57e3542e6c16dfd40972c0b1b0899afb, type: 3}
-  drinkValue: 30
+  drinkValue: 50
   foodValue: 0
   energyValue: 5
   healthValue: 0
